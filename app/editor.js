@@ -26,8 +26,22 @@
  }
  function renderPhotos(){
   photoCount.textContent=photos.length+"/5";
-  photoGrid.innerHTML=photos.map((p,i)=>'<div class="photo-thumb"><img src="'+escapeHtml(p.url||"")+'" alt="Foto '+(i+1)+'"><button type="button" data-remove-photo="'+i+'" aria-label="Hapus foto">×</button></div>').join("")||'<span class="photo-empty">Belum ada foto yang ditambahkan.</span>';
+  photoGrid.innerHTML=photos.map((p,i)=>'<div class="photo-thumb"><img data-preview-photo="'+i+'" src="'+escapeHtml(p.url||"")+'" alt="Foto '+(i+1)+'"><div class="photo-controls"><button type="button" data-move-photo="'+i+'" data-dir="-1" aria-label="Geser ke kiri" '+(i===0?"disabled":"")+'>←</button><button type="button" data-move-photo="'+i+'" data-dir="1" aria-label="Geser ke kanan" '+(i===photos.length-1?"disabled":"")+'>→</button></div><button class="remove-photo" type="button" data-remove-photo="'+i+'" aria-label="Hapus foto">×</button></div>').join("")||'<span class="photo-empty">Belum ada foto yang ditambahkan.</span>';
   photoGrid.querySelectorAll("[data-remove-photo]").forEach(b=>b.addEventListener("click",()=>removePhoto(Number(b.dataset.removePhoto))));
+  photoGrid.querySelectorAll("[data-move-photo]").forEach(b=>b.addEventListener("click",()=>movePhoto(Number(b.dataset.movePhoto),Number(b.dataset.dir))));
+  photoGrid.querySelectorAll("[data-preview-photo]").forEach(img=>img.addEventListener("click",()=>openLightbox(photos[Number(img.dataset.previewPhoto)]?.url)));
+ }
+ function movePhoto(index,direction){
+  const next=index+direction;if(next<0||next>=photos.length)return;
+  [photos[index],photos[next]]=[photos[next],photos[index]];
+  renderPhotos();updatePreview();scheduleSave();
+ }
+ function openLightbox(url){
+  if(!url)return;
+  $("lightbox-image").src=url;$("photo-lightbox").classList.add("open");$("photo-lightbox").setAttribute("aria-hidden","false");
+ }
+ function closeLightbox(){
+  $("photo-lightbox").classList.remove("open");$("photo-lightbox").setAttribute("aria-hidden","true");$("lightbox-image").src="";
  }
  async function removePhoto(index){
   const p=photos[index];if(!p)return;
@@ -68,6 +82,7 @@
   fill(data.content);photos=(data.content?.gallery||[]).filter(p=>p.path).map(p=>({path:p.path}));
   await refreshPhotoUrls();form.querySelectorAll("input:not([type=file]),textarea,select").forEach(el=>el.addEventListener("input",()=>{updatePreview();scheduleSave();}));
   photoInput.addEventListener("change",()=>uploadFiles(photoInput.files));
+  $("lightbox-close").addEventListener("click",closeLightbox);$("photo-lightbox").addEventListener("click",e=>{if(e.target.id==="photo-lightbox")closeLightbox();});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLightbox();});$("preview-gallery").addEventListener("click",e=>{if(e.target.tagName==="IMG")openLightbox(e.target.src);});
   $("preview-reset").addEventListener("click",()=>{if(confirm("Reset preview ke isi tersimpan terakhir?")){fill(project.content);fields.title.value=project.title;photos=(project.content?.gallery||[]).filter(p=>p.path).map(p=>({path:p.path}));refreshPhotoUrls();}});
   form.addEventListener("submit",e=>{e.preventDefault();clearTimeout(saveTimer);save();});
   saveButton.addEventListener("click",save);db.auth.onAuthStateChange(event=>{if(event==="SIGNED_OUT")location.replace("auth.html");});
