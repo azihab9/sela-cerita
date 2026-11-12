@@ -776,3 +776,24 @@ footer .brand:hover{color:#efb99f}
     flex: 0 0 auto !important;
   }
 }
+
+
+/* Correct hero alignment: natural CTA width and sticker anchored to card */
+@media (min-width: 1024px) {
+  .hero-copy {
+    align-items: flex-start !important;
+  }
+  .hero-copy > a.button,
+  .hero-copy > .button {
+    align-self: flex-start !important;
+    display: inline-flex !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    flex: 0 0 auto !important;
+  }
+  .hero-art .sticker {
+    top: calc(50% - 220px) !important;
+    left: calc(50% - 205px) !important;
+  }
+}
