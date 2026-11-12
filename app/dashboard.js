@@ -31,7 +31,7 @@ function renderProjects(projects){
  const recent=document.querySelector("#recent-projects"),all=document.querySelector("#all-projects");
  const cards=projects.map(projectCard).join("");
  const empty='<div class="empty-state"><span>♡</span><h2>Belum ada cerita</h2><p>Pilih template pertamamu dan mulai merangkai cerita.</p><button class="primary-button" data-go="templates">Jelajahi template</button></div>';
- recent.innerHTML=cards?cards.slice(0,2)+'<button class="new-project-card" data-go="templates"><span>＋</span><b>Buat cerita baru</b><small>Pilih template untuk memulai</small></button>':empty;
+ recent.innerHTML=cards?projects.slice(0,2).map(projectCard).join("")+'<button class="new-project-card" data-go="templates"><span>＋</span><b>Buat cerita baru</b><small>Pilih template untuk memulai</small></button>':empty;
  all.innerHTML=cards?cards+'<button class="new-project-card" data-go="templates"><span>＋</span><b>Buat cerita baru</b><small>Pilih template untuk memulai</small></button>':empty;
  document.querySelector("#project-count").textContent=projects.length;
  document.querySelector("#all-project-count").textContent=projects.length;
