@@ -1,7 +1,6 @@
 // Sela Cerita Supabase public client configuration.
-// Replace these two values with your Supabase Project URL and anon/public key.
-// Safe to use in a browser. NEVER put the service_role key here.
+// The publishable key is intended for browser use. Database access is protected by RLS.
 window.SELA_SUPABASE_CONFIG = {
-  url: "YOUR_SUPABASE_PROJECT_URL",
-  anonKey: "YOUR_SUPABASE_ANON_PUBLIC_KEY"
+  url: "https://ycudtcpacpioqzyfjnfq.supabase.co",
+  anonKey: "sb_publishable_ML81KTESNlt04xQjOjfAlw_7zK25vWw"
 };
