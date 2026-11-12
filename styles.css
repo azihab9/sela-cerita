@@ -305,3 +305,57 @@ footer .brand:hover{color:#efb99f}
   .photos{height:100px}
   .note{margin-top:16px}
 }
+
+
+/* Desktop art direction — calibrated for a single 16:9 laptop/desktop viewport */
+@media (min-width: 1024px) {
+  .site-header { height: 68px; }
+  .hero {
+    height: calc(100svh - 68px);
+    min-height: 0;
+    max-height: none;
+    padding: 24px 0 28px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, .92fr);
+    gap: clamp(24px, 3vw, 54px);
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-copy { min-width: 0; }
+  .hero h1 {
+    font-size: clamp(42px, 4.25vw, 54px);
+    line-height: .99;
+    letter-spacing: -2.3px;
+    max-width: 100%;
+  }
+  .hero .eyebrow { font-size: 8px; margin-bottom: 13px; }
+  .hero .lead {
+    font-size: 11px;
+    line-height: 1.65;
+    max-width: 390px;
+    margin: 15px 0 17px;
+  }
+  .hero .button { padding: 13px 17px; font-size: 10px; }
+  .hero .note { margin-top: 17px; font-size: 11px; }
+  .hero-art {
+    height: min(390px, calc(100svh - 150px));
+    min-height: 260px;
+    width: 100%;
+  }
+  .sun { width: min(310px, 27vw); height: min(310px, 27vw); }
+  .memory-card { width: min(300px, 78%); padding: 23px 24px 19px; }
+  .memory-card h2 { font-size: 34px; margin: 13px 0; }
+  .photos { height: 105px; margin-bottom: 13px; }
+  .memory-card small { font-size: 6px; }
+  .sticker { font-size: 12px; padding: 11px 13px; }
+  .orbit-word { font-size: 7px; }
+}
+@media (min-width: 1024px) and (max-height: 650px) {
+  .hero { padding-block: 12px 16px; }
+  .hero h1 { font-size: 42px; }
+  .hero-art { height: 280px; min-height: 240px; }
+  .sun { width: 245px; height: 245px; }
+  .memory-card { width: 270px; padding: 18px; }
+  .memory-card h2 { font-size: 30px; }
+  .photos { height: 86px; }
+  .hero .note { margin-top: 11px; }
+}
