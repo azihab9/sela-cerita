@@ -508,3 +508,38 @@ button.button,
   margin-right: auto !important;
   border-radius: 999px !important;
 }
+
+
+/* Place the floating labels as a tight frame around the memory card */
+@media (min-width: 1024px) {
+  .hero-art .sticker {
+    top: 17% !important;
+    left: 13% !important;
+    padding: 12px 16px !important;
+    border-radius: 5px 5px 5px 18px !important;
+    transform: rotate(-6deg) !important;
+    box-shadow: 0 12px 30px rgba(80,56,49,.10);
+  }
+  .hero-art .orbit-two {
+    left: 13% !important;
+    bottom: 15% !important;
+    padding: 7px 12px !important;
+    border: 1px solid rgba(141,118,109,.2);
+    border-radius: 999px !important;
+    background: rgba(255,250,246,.82);
+    font-size: 7px;
+    letter-spacing: 1.2px;
+    white-space: nowrap;
+  }
+  .hero-art .orbit-one {
+    right: 8% !important;
+    bottom: 13% !important;
+    max-width: 220px !important;
+    padding: 9px 14px !important;
+    border-radius: 999px !important;
+    background: rgba(255,250,246,.88);
+    box-shadow: 0 8px 24px rgba(80,56,49,.08);
+    font-size: 7px;
+    letter-spacing: 1.2px;
+  }
+}
