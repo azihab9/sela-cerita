@@ -543,3 +543,30 @@ button.button,
     letter-spacing: 1.2px;
   }
 }
+
+
+/* Re-compose hero labels around the card; keep the ticker pill intentional */
+@media (min-width: 1024px) {
+  .hero-art {
+    left: 0 !important;
+    transform: none !important;
+  }
+  .hero-art .sticker {
+    top: calc(50% - 190px) !important;
+    left: calc(50% - 165px) !important;
+    border-radius: 5px 5px 5px 18px !important;
+    transform: rotate(-6deg) !important;
+  }
+  .hero-art .orbit-two {
+    left: calc(50% - 165px) !important;
+    bottom: calc(50% - 178px) !important;
+    border-radius: 999px !important;
+    white-space: nowrap;
+  }
+  .hero-art .orbit-one {
+    right: calc(50% - 165px) !important;
+    bottom: calc(50% - 178px) !important;
+    border-radius: 999px !important;
+    white-space: nowrap;
+  }
+}
