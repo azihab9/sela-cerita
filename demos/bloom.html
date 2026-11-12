@@ -47,7 +47,7 @@
 <script>
 (()=>{const $=id=>document.getElementById(id);let anniversaryDate="2021-02-14",timer=null,audio=null,musicTimer=null,musicStep=0,heroObjectUrl=null,coverObjectUrl=null;const toast=message=>{const t=$("toast");t.textContent=message;t.classList.add("show");clearTimeout(timer);timer=setTimeout(()=>t.classList.remove("show"),2600)};const safe=v=>String(v||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function updateCounter(){const start=new Date(anniversaryDate+"T00:00:00"),diff=Math.max(0,Date.now()-start.getTime());$("days").textContent=Math.floor(diff/86400000).toLocaleString("id-ID");$("hours").textContent=String(Math.floor(diff/3600000)%24).padStart(2,"0");$("minutes").textContent=String(Math.floor(diff/60000)%60).padStart(2,"0");$("seconds").textContent=String(Math.floor(diff/1000)%60).padStart(2,"0");$("anniversary-label").textContent="Est. "+start.toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});}
-updateCounter();setInterval(updateCounter,1000);
+window.setBloomAnniversaryDate=function(value){anniversaryDate=value||anniversaryDate;updateCounter();};updateCounter();setInterval(updateCounter,1000);
 $("open-site").addEventListener("click",()=>{$("cover").classList.add("closed");document.body.classList.remove("locked");toast("A little world, just for you ♡");});
 document.querySelectorAll(".bottom-nav a").forEach(a=>a.addEventListener("click",()=>{document.querySelectorAll(".bottom-nav a").forEach(x=>x.classList.remove("active"));a.classList.add("active");}));
 const sections=[...document.querySelectorAll("main section[id]")];if("IntersectionObserver"in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){document.querySelectorAll(".bottom-nav a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+entry.target.id));}}),{rootMargin:"-35% 0px -55% 0px"});sections.forEach(s=>observer.observe(s));}
@@ -102,7 +102,7 @@ window.addEventListener("beforeunload",()=>{if(heroObjectUrl)URL.revokeObjectURL
   document.getElementById("story-intro").textContent=story;
   document.getElementById("counter-heading").textContent=couple?"Every day, "+couple+".":"Every day, a little more us.";
   document.getElementById("footer-names").textContent=(couple||"ONE STORY · TWO HEARTS")+" · COUNTLESS LITTLE MOMENTS";
-  if(date){anniversaryDate=date;updateCounter();}
+  if(date&&window.setBloomAnniversaryDate){window.setBloomAnniversaryDate(date);}
   const dateLabel=document.getElementById("anniversary-label");
   if(dateLabel&&date)dateLabel.textContent="Est. "+new Date(date+"T00:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
   const photoItems=[];
@@ -118,7 +118,6 @@ window.addEventListener("beforeunload",()=>{if(heroObjectUrl)URL.revokeObjectURL
   }else{
     document.getElementById("gallery").style.display="none";
   }
-  document.getElementById("project-title").textContent=project.title||"Our Little Universe";
 })().catch(error=>{console.error("Bloom preview:",error);const toast=document.getElementById("toast");if(toast){toast.textContent="Preview gagal dimuat. Coba muat ulang halaman.";toast.classList.add("show");}});
 </script>
 </body></html>
