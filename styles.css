@@ -570,3 +570,32 @@ button.button,
     white-space: nowrap;
   }
 }
+
+
+/* The moving ticker is a full-bleed ribbon, not a pill/card */
+.ticker {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+.ticker:before,
+.ticker:after {
+  border-radius: 0 !important;
+}
+.ticker-track {
+  width: max-content !important;
+}
+.ticker-track span {
+  padding: 17px 0 !important;
+}
+@media (max-width: 760px) {
+  .ticker {
+    width: 100% !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+}
