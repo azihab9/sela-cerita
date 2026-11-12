@@ -111,6 +111,10 @@ with check (
   owner_id = (select auth.uid())
   and status = 'draft'
   and published_at is null
+  and exists (
+    select 1 from public.templates t
+    where t.id = template_id and t.is_active = true
+  )
 );
 
 create policy "Users can update own draft projects"
@@ -140,6 +144,10 @@ with check (
   owner_id = (select auth.uid())
   and payment_status = 'pending'
   and verified_at is null
+  and exists (
+    select 1 from public.projects p
+    where p.id = project_id and p.owner_id = (select auth.uid())
+  )
 );
 
 -- Seed the current public demo templates.
