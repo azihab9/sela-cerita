@@ -27,7 +27,7 @@
         <a href="#settings" data-view="settings"><span>⚙</span> Pengaturan</a>
         <a href="#help" data-view="help"><span>♡</span> Bantuan</a>
       </nav>
-      <div class="sidebar-bottom"><div class="avatar">SC</div><div><b>Ruang ceritamu</b><small>Customer workspace</small></div><span class="dots">···</span></div>
+      <div class="sidebar-bottom"><div class="avatar" id="user-avatar">SC</div><div class="user-meta"><b id="user-name">Ruang ceritamu</b><small id="user-email">Customer workspace</small></div><button class="logout-button" id="logout-button" type="button" title="Keluar">↗</button></div>
     </aside>
 
     <main class="main-area">
@@ -41,31 +41,23 @@
         <div class="welcome-row"><div><p class="eyebrow">YOUR LITTLE CREATIVE SPACE</p><h1>Halo, <em>teman cerita.</em> ♡</h1><p class="subheading">Semua cerita spesialmu dimulai dari sini.</p></div><div class="date-chip">✳ &nbsp; YOUR SPACE, YOUR STORY</div></div>
         <div class="stats-grid">
           <article class="stat-card"><span class="stat-icon peach">▧</span><small>Total cerita</small><strong id="project-count">2</strong><span>Project dalam akunmu</span></article>
-          <article class="stat-card"><span class="stat-icon lilac">✎</span><small>Dalam pengerjaan</small><strong>1</strong><span>Cerita yang masih draft</span></article>
-          <article class="stat-card"><span class="stat-icon sage">♡</span><small>Website terbit</small><strong>1</strong><span>Siap dibagikan</span></article>
+          <article class="stat-card"><span class="stat-icon lilac">✎</span><small>Dalam pengerjaan</small><strong id="draft-count">0</strong><span>Cerita yang masih draft</span></article>
+          <article class="stat-card"><span class="stat-icon sage">♡</span><small>Website terbit</small><strong id="published-count">0</strong><span>Siap dibagikan</span></article>
         </div>
         <div class="section-title"><div><p class="eyebrow">MADE BY YOU</p><h2>Cerita terakhirmu</h2></div><button class="text-button" data-go="projects">Lihat semua →</button></div>
-        <div class="project-grid" id="recent-projects">
-          <article class="project-card"><div class="project-art bloom-art"><span>01 / THE ROMANTIC</span><div>To my<br><i>favorite</i><br>person. ♡</div><small>BLOOM TEMPLATE</small></div><div class="project-info"><div><h3>Our Anniversary</h3><p>Bloom · Diperbarui hari ini</p></div><span class="status draft">Draft</span></div><button class="card-action" data-go="projects">Lanjut edit ↗</button></article>
-          <article class="project-card"><div class="project-art chapter-art"><span>02 / THE EDITORIAL</span><div>CHAPTER<br><i>of us.</i></div><small>CHAPTER TEMPLATE</small></div><div class="project-info"><div><h3>A Little Memory</h3><p>Chapter · Website terbit</p></div><span class="status published">Terbit</span></div><button class="card-action" data-go="projects">Lihat website ↗</button></article>
-          <button class="new-project-card" data-go="templates"><span>＋</span><b>Buat cerita baru</b><small>Pilih template untuk memulai</small></button>
-        </div>
+        <div class="project-grid" id="recent-projects"><p class="loading-state">Memuat ceritamu...</p></div>
         <div class="bottom-note"><span>✿</span><div><b>Setiap cerita punya tempatnya sendiri.</b><p>Ambil waktumu, isi dengan hal-hal yang berarti, dan biarkan Sela Cerita merangkainya.</p></div></div>
       </section>
 
       <section class="view" id="projects">
         <div class="page-heading"><p class="eyebrow">YOUR COLLECTION</p><h1>Ceritaku <em>sendiri.</em></h1><p class="subheading">Kelola semua website yang kamu buat dalam satu tempat.</p></div>
-        <div class="toolbar"><span>Semua project <b>2</b></span><button class="primary-button" data-go="templates">＋ Buat cerita baru</button></div>
-        <div class="project-grid">
-          <article class="project-card"><div class="project-art bloom-art"><span>01 / THE ROMANTIC</span><div>To my<br><i>favorite</i><br>person. ♡</div><small>BLOOM TEMPLATE</small></div><div class="project-info"><div><h3>Our Anniversary</h3><p>Bloom · Diperbarui hari ini</p></div><span class="status draft">Draft</span></div><button class="card-action" data-demo-edit="Bloom">Edit cerita ↗</button></article>
-          <article class="project-card"><div class="project-art chapter-art"><span>02 / THE EDITORIAL</span><div>CHAPTER<br><i>of us.</i></div><small>CHAPTER TEMPLATE</small></div><div class="project-info"><div><h3>A Little Memory</h3><p>Chapter · Website terbit</p></div><span class="status published">Terbit</span></div><button class="card-action" data-demo-edit="Chapter">Buka preview ↗</button></article>
-          <button class="new-project-card" data-go="templates"><span>＋</span><b>Buat cerita baru</b><small>Pilih template untuk memulai</small></button>
-        </div>
+        <div class="toolbar"><span>Semua project <b id="all-project-count">0</b></span><button class="primary-button" data-go="templates">＋ Buat cerita baru</button></div>
+        <div class="project-grid" id="all-projects"><p class="loading-state">Memuat ceritamu...</p></div>
       </section>
 
       <section class="view" id="templates">
         <div class="page-heading"><p class="eyebrow">FIND YOUR STORY STYLE</p><h1>Pilih <em>template.</em></h1><p class="subheading">Pilih desain yang paling terasa seperti ceritamu. Kamu bisa personalisasi setelah memilih.</p></div>
-        <div class="template-grid">
+        <div class="template-grid" id="template-grid">
           <article class="template-option"><div class="project-art bloom-art"><span>01 / THE ROMANTIC</span><div>To my<br><i>favorite</i><br>person. ♡</div><small>BLOOM TEMPLATE</small></div><h3>Bloom</h3><p>Soft, romantic, and full of warmth.</p><button class="primary-button choose-template" data-template="Bloom">Pilih Bloom ↗</button></article>
           <article class="template-option"><div class="project-art chapter-art"><span>02 / THE EDITORIAL</span><div>CHAPTER<br><i>of us.</i></div><small>CHAPTER TEMPLATE</small></div><h3>Chapter</h3><p>Timeless, clean, and a little poetic.</p><button class="primary-button choose-template" data-template="Chapter">Pilih Chapter ↗</button></article>
           <article class="template-option"><div class="project-art playdate-art"><span>03 / THE PLAYFUL</span><div>GOOD<br>TIMES<br><i>only!</i></div><small>PLAYDATE TEMPLATE</small></div><h3>Playdate</h3><p>Fun, colorful, and unapologetically you.</p><button class="primary-button choose-template" data-template="Playdate">Pilih Playdate ↗</button></article>
@@ -79,6 +71,8 @@
     </main>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
   <script src="dashboard.js"></script>
 </body>
 </html>
