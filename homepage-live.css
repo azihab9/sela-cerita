@@ -589,3 +589,25 @@ footer .brand:hover{color:#efb99f}
   border-radius: 0 !important;
   overflow: hidden !important;
 }
+
+
+/* Floating "a day to remember" sticker */
+.hero-art .sticker {
+  top: 3% !important;
+  left: 8% !important;
+  animation: memory-sticker-float 5.2s ease-in-out infinite !important;
+  will-change: transform;
+}
+@keyframes memory-sticker-float {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-11px) rotate(-3deg); }
+}
+@media (max-width: 760px) {
+  .hero-art .sticker {
+    top: 2% !important;
+    left: 4% !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-art .sticker { animation: none !important; }
+}
