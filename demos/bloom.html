@@ -12,6 +12,9 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans)}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}.demo-bar{padding:11px 5vw;background:#392e31;color:#fff8f4;display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:.8px}.demo-bar a{opacity:.8}.demo-bar b{color:#f2b7b4}.nav{height:70px;padding:0 7vw;display:flex;align-items:center;justify-content:space-between;background:#fff9f5eF;backdrop-filter:blur(14px);position:sticky;top:0;z-index:10;border-bottom:1px solid #6e4c4c14}.logo{font:italic 22px var(--serif)}.logo span{color:var(--rose)}.navlinks{display:flex;gap:27px;font-size:10px;color:#816d6e}.navlinks a:hover{color:var(--rose)}.hero{min-height:680px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;padding:70px max(7vw,30px);background:radial-gradient(circle at 80% 45%,#f3d9d2 0 18%,transparent 18.2%),linear-gradient(135deg,#fff9f5,#f8e9e5)}.eyebrow{font-size:9px;letter-spacing:2.5px;color:#b27c7d;font-weight:700}.hero h1{font:500 clamp(54px,7vw,88px)/.98 var(--serif);letter-spacing:-3px;margin:22px 0}.hero h1 em{color:var(--rose);font-weight:500}.hero-copy>p:not(.eyebrow){max-width:390px;font-size:12px;line-height:2;color:#8d7777}.hero-actions{display:flex;align-items:center;gap:20px;margin-top:30px}.pill{border:0;border-radius:30px;background:var(--ink);color:white;padding:14px 21px;font-size:10px}.subtle{font-size:10px;color:#9a8080}.hero-photo{height:470px;position:relative;display:grid;place-items:center}.hero-photo img{width:min(350px,80%);height:430px;object-fit:cover;border-radius:180px 180px 12px 12px;box-shadow:0 25px 55px #7653542b;transform:rotate(3deg)}.photo-note{position:absolute;bottom:25px;left:0;background:#fffaf6;padding:15px 20px;box-shadow:0 8px 24px #795c4d18;font:italic 15px var(--serif);transform:rotate(-7deg)}.heart-float{position:absolute;right:8%;top:6%;font-size:44px;color:#d88d91}.section{padding:100px 7vw}.center{text-align:center}.section h2{font:500 clamp(38px,5vw,58px)/1.1 var(--serif);letter-spacing:-1.5px;margin:14px 0 18px}.section h2 em{color:var(--rose)}.intro{max-width:500px;margin:0 auto;color:var(--muted);font-size:12px;line-height:2}.counter{background:#392e31;color:#fff5f1;padding:75px 7vw;text-align:center}.counter .eyebrow{color:#e5aaa7}.counter h2{font:italic 36px var(--serif);font-weight:500;margin:10px}.count-grid{display:flex;justify-content:center;gap:clamp(22px,6vw,70px);margin-top:32px}.count-item strong{display:block;font:500 42px var(--serif);color:#f1b8b4}.count-item span{font-size:8px;letter-spacing:2px;color:#d8c0bc}.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px;text-align:left}.story-card{background:#f7e9e4;padding:27px 24px;min-height:190px}.story-card:nth-child(2){background:#eee5ed}.story-card:nth-child(3){background:#f2e7d9}.story-card b{font:italic 25px var(--serif);color:var(--rose)}.story-card h3{font:500 21px var(--serif);margin:18px 0 8px}.story-card p{font-size:10px;line-height:1.8;color:var(--muted);margin:0}.gallery{background:#f7e9e4}.gallery-grid{display:grid;grid-template-columns:1.1fr .9fr 1fr;grid-template-rows:210px 210px;gap:13px;margin-top:45px}.gallery-grid img{width:100%;height:100%;object-fit:cover;border-radius:5px;cursor:pointer;transition:transform .3s}.gallery-grid img:hover{transform:scale(1.02)}.gallery-grid img:first-child{grid-row:span 2}.gallery-grid img:last-child{grid-column:2/4}.letter-wrap{max-width:680px;margin:42px auto 0;background:white;padding:clamp(28px,6vw,55px);box-shadow:0 15px 45px #795c4d13;border:1px solid #f1e3df}.letter-wrap .letter-top{font-size:9px;letter-spacing:2px;color:#b27c7d}.letter-wrap h3{font:italic 32px var(--serif);margin:18px 0}.letter-wrap p{font:14px/2 var(--serif);color:#806d6c}.letter-hidden{display:none}.letter-hidden.show{display:block;animation:fade .8s ease}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.letter-button{margin-top:12px;border:1px solid #d9b6b3;background:transparent;color:#936c6d;border-radius:30px;padding:13px 20px;font-size:10px}.closing{background:#392e31;color:#fff5f1;text-align:center;padding:95px 20px}.closing h2{font:italic clamp(40px,6vw,66px) var(--serif);margin:18px}.closing p{font-size:11px;color:#d9c4c1}.closing .heart{font-size:30px;color:#f1b8b4;margin-top:25px}.footer{padding:25px 7vw;display:flex;justify-content:space-between;font-size:9px;color:#927d7c}.lightbox{position:fixed;inset:0;background:#20191beF;display:none;place-items:center;z-index:30;padding:30px}.lightbox.open{display:grid}.lightbox img{max-width:min(900px,90vw);max-height:85vh;object-fit:contain}.lightbox button{position:absolute;top:20px;right:25px;background:none;border:0;color:white;font-size:32px}
 @media(max-width:760px){.nav{height:60px;padding:0 20px}.navlinks{gap:12px;font-size:9px}.hero{grid-template-columns:1fr;padding:55px 25px 40px;gap:20px}.hero h1{font-size:60px}.hero-photo{height:360px}.hero-photo img{height:330px;width:250px}.section{padding:75px 22px}.story-grid{grid-template-columns:1fr}.story-card{min-height:0}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px}.gallery-grid img:first-child{grid-row:span 2}.gallery-grid img:last-child{grid-column:1/3}.count-grid{gap:20px}.count-item strong{font-size:34px}.footer{gap:10px;flex-wrap:wrap}.demo-bar{font-size:8px}.navlinks a:nth-child(2){display:none}}
 @media(max-width:390px){.navlinks{gap:9px}.navlinks a{font-size:8px}.hero h1{font-size:52px}.count-grid{gap:13px}.count-item strong{font-size:29px}.count-item span{font-size:7px}}
+
+.personalize-fab,.music-fab{position:fixed;right:20px;z-index:15;border:0;border-radius:30px;padding:13px 17px;box-shadow:0 8px 25px #51383b25;font-size:10px;font-weight:700}.personalize-fab{bottom:20px;background:#49383a;color:#fff}.music-fab{bottom:70px;background:#fff9f5;color:#805f62;border:1px solid #ead4d1}.settings-dialog{width:min(440px,calc(100% - 28px));border:1px solid #ead4d1;border-radius:14px;padding:28px;background:#fff9f5;color:var(--ink);box-shadow:0 25px 80px #30202340}.settings-dialog::backdrop{background:#24191ab8;backdrop-filter:blur(4px)}.settings-dialog h2{font:500 30px var(--serif);margin:0 0 8px}.settings-dialog>p{font-size:11px;line-height:1.7;color:var(--muted);margin:0 0 20px}.settings-dialog label{display:grid;gap:7px;margin:13px 0;font-size:10px;font-weight:700}.settings-dialog input{width:100%;padding:12px;border:1px solid #e4cfcc;background:white;color:var(--ink);font:12px var(--sans);border-radius:5px}.dialog-actions{display:flex;gap:10px;margin-top:20px}.dialog-actions button{flex:1;padding:12px;border-radius:30px;border:1px solid #d9b6b3;background:transparent;color:#805f62;font-size:10px}.dialog-actions button[type=submit]{background:var(--ink);color:white;border-color:var(--ink)}.demo-hint{font-size:9px!important;color:#a18b89!important;margin-top:12px!important}
+@media(max-width:760px){.personalize-fab,.music-fab{right:12px;padding:12px 14px}.personalize-fab{bottom:12px}.music-fab{bottom:60px}.settings-dialog{padding:22px}}
 </style>
 </head>
 <body>
@@ -19,10 +22,10 @@
 <nav class="nav"><a class="logo" href="#top">our little <span>♡</span> universe</a><div class="navlinks"><a href="#story">Our story</a><a href="#gallery">Gallery</a><a href="#letter">A letter</a></div></nav>
 <main id="top">
 <section class="hero">
- <div class="hero-copy"><p class="eyebrow">A LITTLE WEBSITE MADE WITH LOVE</p><h1>To my<br><em>favorite</em><br>person.</h1><p>For all the little things, the silly laughs, and every beautiful day in between. This tiny corner of the internet is just for us.</p><div class="hero-actions"><a class="pill" href="#story">Explore our story ♡</a><span class="subtle">Est. 14 February 2021</span></div></div>
+ <div class="hero-copy"><p class="eyebrow">A LITTLE WEBSITE MADE WITH LOVE</p><h1>To my<br><em>favorite</em><br>person.</h1><p>For all the little things, the silly laughs, and every beautiful day in between. This tiny corner of the internet is just for us.</p><div class="hero-actions"><a class="pill" href="#story">Explore our story ♡</a><span class="subtle" id="anniversary-label">Est. 14 February 2021</span></div></div>
  <div class="hero-photo"><img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=85" alt="Pasangan berpelukan saat matahari terbenam"><span class="photo-note">you + me, always</span><span class="heart-float">♡</span></div>
 </section>
-<section class="counter"><p class="eyebrow">AND THE STORY KEEPS GOING</p><h2>Every day, a little more us.</h2><p style="font-size:10px;color:#d8c0bc">A little reminder of how far we've come.</p><div class="count-grid"><div class="count-item"><strong id="days">—</strong><span>DAYS</span></div><div class="count-item"><strong id="hours">—</strong><span>HOURS</span></div><div class="count-item"><strong id="minutes">—</strong><span>MINUTES</span></div></div></section>
+<section class="counter"><p class="eyebrow">AND THE STORY KEEPS GOING</p><h2 id="counter-heading">Every day, a little more us.</h2><p style="font-size:10px;color:#d8c0bc">A little reminder of how far we've come.</p><div class="count-grid"><div class="count-item"><strong id="days">—</strong><span>DAYS</span></div><div class="count-item"><strong id="hours">—</strong><span>HOURS</span></div><div class="count-item"><strong id="minutes">—</strong><span>MINUTES</span></div></div></section>
 <section class="section center" id="story"><p class="eyebrow">01 / THE LITTLE THINGS</p><h2>Our story is made of<br><em>tiny moments.</em></h2><p class="intro">Bukan tentang hari yang selalu sempurna. Tapi tentang memilih untuk tetap bersama, belajar, tertawa, dan tumbuh berdua.</p><div class="story-grid"><article class="story-card"><b>01</b><h3>The first hello</h3><p>Awalnya cuma sapaan sederhana. Siapa sangka, dari sana banyak cerita dimulai.</p></article><article class="story-card"><b>02</b><h3>The unexpected days</h3><p>Obrolan random, perjalanan kecil, dan tawa yang kadang nggak ada habisnya.</p></article><article class="story-card"><b>03</b><h3>Still choosing you</h3><p>Hari demi hari, kita terus belajar jadi rumah yang nyaman satu sama lain.</p></article></div></section>
 <section class="section gallery center" id="gallery"><p class="eyebrow">02 / MOMENTS WE KEEP</p><h2>A gallery full of <em>us.</em></h2><p class="intro">Some memories deserve more than a spot in the camera roll. Tap a photo to see it closer.</p><div class="gallery-grid">
 <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=85" alt="Pasangan berjalan bersama" loading="lazy">
@@ -34,15 +37,72 @@
 <section class="closing"><p class="eyebrow">TO BE CONTINUED...</p><h2>My favorite place<br>is next to you.</h2><p>One story. Two hearts. Countless little moments.</p><div class="heart">♡</div></section>
 </main>
 <footer class="footer"><a href="../index.html">Made with love by Sela Cerita ↗</a><span>Bloom Template · Demo content</span></footer>
+<button class="music-fab" id="music-toggle" type="button" aria-pressed="false">♫ Play our melody</button>
+<button class="personalize-fab" id="personalize-open" type="button">✎ Personalize demo</button>
+<dialog class="settings-dialog" id="settings-dialog">
+  <h2>Make it yours ♡</h2>
+  <p>Ubah nama dan tanggal untuk melihat bagaimana Bloom terasa lebih personal. Perubahan ini hanya tampil di browser kamu.</p>
+  <form id="personalize-form">
+    <label>Nama pertama<input id="name-one" maxlength="24" placeholder="Contoh: Alex"></label>
+    <label>Nama kedua<input id="name-two" maxlength="24" placeholder="Contoh: Jamie"></label>
+    <label>Tanggal anniversary<input id="anniversary-date" type="date" value="2021-02-14" required></label>
+    <div class="dialog-actions"><button type="button" id="personalize-cancel">Tutup</button><button type="submit">Terapkan ♡</button></div>
+  </form>
+  <p class="demo-hint">Demo interaktif Sela Cerita · Data tidak dikirim atau disimpan.</p>
+</dialog>
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto kenangan"><button id="close-lightbox" aria-label="Tutup foto">×</button><img id="lightbox-image" alt=""></div>
 <script>
-const startDate = new Date("2021-02-14T00:00:00");
-function updateCounter(){const diff=Math.max(0,Date.now()-startDate.getTime());document.getElementById("days").textContent=Math.floor(diff/86400000).toLocaleString("id-ID");document.getElementById("hours").textContent=String(Math.floor(diff/3600000)%24).padStart(2,"0");document.getElementById("minutes").textContent=String(Math.floor(diff/60000)%60).padStart(2,"0")}
+let anniversaryDate = "2021-02-14";
+function updateCounter(){
+ const startDate = new Date(anniversaryDate + "T00:00:00");
+ const diff = Math.max(0, Date.now() - startDate.getTime());
+ document.getElementById("days").textContent = Math.floor(diff/86400000).toLocaleString("id-ID");
+ document.getElementById("hours").textContent = String(Math.floor(diff/3600000)%24).padStart(2,"0");
+ document.getElementById("minutes").textContent = String(Math.floor(diff/60000)%60).padStart(2,"0");
+ document.getElementById("anniversary-label").textContent = "Est. " + startDate.toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
+}
 updateCounter();setInterval(updateCounter,60000);
+const settingsDialog=document.getElementById("settings-dialog");
+document.getElementById("personalize-open").addEventListener("click",()=>settingsDialog.showModal());
+document.getElementById("personalize-cancel").addEventListener("click",()=>settingsDialog.close());
+document.getElementById("personalize-form").addEventListener("submit",event=>{
+ event.preventDefault();
+ const first=document.getElementById("name-one").value.trim();
+ const second=document.getElementById("name-two").value.trim();
+ anniversaryDate=document.getElementById("anniversary-date").value;
+ const heading=document.querySelector(".hero h1");
+ heading.innerHTML=first&&second ? "To <em>"+first.replace(/[&<>"]/g,"")+"</em><br>&amp;<br>"+second.replace(/[&<>"]/g,"")+"." : first ? "To my<br><em>"+first.replace(/[&<>"]/g,"")+"</em><br>person." : "To my<br><em>favorite</em><br>person.";
+ document.querySelector(".photo-note").textContent=first&&second?first+" + "+second+", always":"you + me, always";
+ document.querySelector(".counter h2").textContent=first&&second?"Every day, "+first+" & "+second+".":"Every day, a little more us.";
+ updateCounter();settingsDialog.close();
+});
 document.getElementById("open-letter").addEventListener("click",()=>{const letter=document.getElementById("hidden-letter");const show=letter.classList.toggle("show");document.getElementById("open-letter").textContent=show?"Close your little letter ♡":"Open your little letter ♡"});
 const box=document.getElementById("lightbox"),large=document.getElementById("lightbox-image");
 document.querySelectorAll(".gallery-grid img").forEach(img=>img.addEventListener("click",()=>{large.src=img.src;large.alt=img.alt;box.classList.add("open")}));
 function closeBox(){box.classList.remove("open");large.src=""}
 document.getElementById("close-lightbox").addEventListener("click",closeBox);box.addEventListener("click",e=>{if(e.target===box)closeBox()});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeBox()});
+
+// Original gentle synthesized ambient melody; audio starts only after the visitor taps play.
+let audioContext=null,melodyTimer=null,melodyStep=0;
+const musicButton=document.getElementById("music-toggle");
+function playChord(){
+ if(!audioContext)return;
+ const chords=[[261.63,329.63,392.00],[220.00,261.63,329.63],[174.61,220.00,261.63],[196.00,246.94,293.66]];
+ const notes=chords[melodyStep%chords.length];melodyStep++;
+ const now=audioContext.currentTime;
+ notes.forEach((frequency,index)=>{
+  const oscillator=audioContext.createOscillator(),gain=audioContext.createGain();
+  oscillator.type="sine";oscillator.frequency.value=frequency;
+  gain.gain.setValueAtTime(0,now);gain.gain.linearRampToValueAtTime(0.035,now+0.7);gain.gain.exponentialRampToValueAtTime(0.001,now+3.7);
+  oscillator.connect(gain);gain.connect(audioContext.destination);oscillator.start(now);oscillator.stop(now+3.8);
+ });
+}
+musicButton.addEventListener("click",async()=>{
+ if(!audioContext)audioContext=new(window.AudioContext||window.webkitAudioContext)();
+ if(audioContext.state==="suspended")await audioContext.resume();
+ const playing=musicButton.getAttribute("aria-pressed")==="true";
+ if(playing){clearInterval(melodyTimer);melodyTimer=null;musicButton.setAttribute("aria-pressed","false");musicButton.textContent="♫ Play our melody";return;}
+ playChord();melodyTimer=setInterval(playChord,3900);musicButton.setAttribute("aria-pressed","true");musicButton.textContent="Ⅱ Pause melody";
+});
 </script>
 </body></html>
