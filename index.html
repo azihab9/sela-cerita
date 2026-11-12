@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f8f0e9">
   <meta name="description" content="Sela Cerita — ruang kecil untuk cerita yang berarti.">
   <title>Sela Cerita — Every Moment Has a Story</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="homepage-custom.css">
 </head>
 <body>
   <header class="site-header">
@@ -16,21 +16,43 @@
   </header>
   <main>
     <section class="hero wrap" id="home">
-      <div><p class="eyebrow">A LITTLE SPACE FOR YOUR BIG MOMENTS</p><h1>Some moments<br>deserve <em>their own</em><br><span>little website.</span></h1><p class="lead">Bukan sekadar halaman, tapi ruang kecil untuk menyimpan cerita, foto, dan hal-hal yang ingin kamu kenang selamanya.</p><a class="button" href="#koleksi">Jelajahi koleksi ↗</a><p class="note">✳ Made with care, for moments that matter.</p></div>
-      <div class="hero-art"><div class="sun"></div><div class="memory-card"><small>A COLLECTION OF US</small><h2>Every love<br>has a story.</h2><div class="photos"><span>the little things</span><span>♡</span></div><small>SINCE THE DAY WE MET · 2021</small></div><span class="sticker">a day<br>to remember ♡</span></div>
+      <div class="hero-copy" data-reveal><p class="eyebrow">A LITTLE SPACE FOR YOUR BIG MOMENTS</p><h1>Some moments<br>deserve <em>their own</em><br><span>little website.</span></h1><p class="lead">Bukan sekadar halaman, tapi ruang kecil untuk menyimpan cerita, foto, dan hal-hal yang ingin kamu kenang selamanya.</p><a class="button" href="#koleksi">Jelajahi koleksi ↗</a><p class="note">✳ Made with care, for moments that matter.</p></div>
+      <div class="hero-art" data-reveal><div class="sun"></div><div class="memory-card"><small>A COLLECTION OF US</small><h2>Every love<br>has a story.</h2><div class="photos"><span>the little things</span><span>♡</span></div><small>SINCE THE DAY WE MET · 2021</small></div><span class="sticker">a day<br>to remember ♡</span></div>
     </section>
-    <div class="ticker">EVERY MOMENT HAS A STORY　✳　MADE WITH LOVE　✳　A SPACE TO REMEMBER　✳　</div>
-    <section class="wrap collection" id="koleksi"><p class="eyebrow">01 / THE COLLECTION</p><div class="section-head"><h2>One story,<br><em>many ways</em> to tell it.</h2><p class="lead">Pilih tampilan yang paling terasa seperti ceritamu. Setiap template bisa dipersonalisasi dengan foto, kata, dan detail milikmu.</p></div>
+    <div class="ticker" aria-label="Every moment has a story"><div class="ticker-track"><span>EVERY MOMENT HAS A STORY　✳　MADE WITH LOVE　✳　A SPACE TO REMEMBER　✳　</span><span aria-hidden="true">EVERY MOMENT HAS A STORY　✳　MADE WITH LOVE　✳　A SPACE TO REMEMBER　✳　</span></div></div>
+    <section class="wrap collection" id="koleksi" data-reveal><p class="eyebrow">01 / THE COLLECTION</p><div class="section-head"><h2>One story,<br><em>many ways</em> to tell it.</h2><p class="lead">Pilih tampilan yang paling terasa seperti ceritamu. Setiap template bisa dipersonalisasi dengan foto, kata, dan detail milikmu.</p></div>
       <div class="cards">
         <a class="template bloom" href="demos/bloom.html"><small>01 — THE ROMANTIC</small><div><p>A LITTLE NOTE FOR YOU</p><h3>To my<br>favorite person.</h3>♡</div><b>VIEW DEMO ↗</b><h4>Bloom</h4><p>Soft, romantic, and full of warmth.</p></a>
         <a class="template chapter" href="demos/chapter.html"><small>02 — THE EDITORIAL</small><div><h3>CHAPTER<br><i>of us.</i></h3><p>01 / A MEMORY</p></div><b>VIEW DEMO ↗</b><h4>Chapter</h4><p>Timeless, clean, and a little poetic.</p></a>
         <a class="template playdate" href="demos/playdate.html"><small>03 — THE PLAYFUL</small><div><h3>GOOD<br>TIMES<br><i>only!</i></h3></div><b>VIEW DEMO ↗</b><h4>Playdate</h4><p>Fun, colorful, and unapologetically you.</p></a>
       </div>
     </section>
-    <section class="manifesto" id="tentang"><div class="wrap"><p class="eyebrow">02 / A NOTE FROM US</p><h2>Because some things<br>are too <em>special</em><br>to be just another post.</h2><p>Foto bisa tersimpan di galeri. Pesan bisa tertinggal di chat. Tapi ada momen yang rasanya ingin kita beri tempat sendiri — tempat yang bisa dibuka lagi, kapan saja.</p><strong>Sela Cerita ♡</strong></div></section>
-    <section class="wrap process" id="cara-kerja"><p class="eyebrow">03 / THE PROCESS</p><h2>Simple steps,<br><em>personal</em> story.</h2><div class="steps"><article><b>01</b><h3>Choose a style</h3><p>Pilih template favorit atau ceritakan ide website custom-mu.</p></article><article><b>02</b><h3>Share your details</h3><p>Kirim foto, nama, tanggal, dan detail kecil yang ingin dimasukkan.</p></article><article><b>03</b><h3>Make it yours</h3><p>Kami susun dan personalisasi, lalu kirim preview untuk kamu cek.</p></article><article><b>04</b><h3>Share the moment</h3><p>Website siap dibagikan lewat satu tautan spesial.</p></article></div></section>
-    <section class="custom"><div class="wrap"><p class="eyebrow">NOT QUITE YOUR STYLE?</p><h2>Your story.<br><em>Your own design.</em></h2><p>Punya konsep sendiri? Kami juga menerima website custom yang dirancang dari awal, mengikuti cerita dan keinginanmu.</p><a class="button light" href="#pesan">Ceritakan idemu ↗</a></div></section>
-    <section class="wrap order" id="pesan"><div><p class="eyebrow">04 / LET'S BEGIN</p><h2>Let's make<br>something <em>meaningful.</em></h2><p class="lead">Mulai dengan cerita singkat. Kami akan menghubungimu untuk membahas detail dan proses berikutnya.</p></div>
+
+    <section class="story-showcase" data-reveal>
+      <div class="wrap showcase-intro">
+        <p class="eyebrow">A WEBSITE, A WORLD OF YOUR OWN</p>
+        <p class="showcase-kicker">Not just a link.<br><em>A little world to revisit.</em></p>
+        <p class="showcase-copy">Dari halaman pertama sampai detail terkecil, setiap bagian dirancang untuk terasa dekat dengan ceritamu.</p>
+      </div>
+      <div class="showcase-stage">
+        <div class="showcase-orbit orbit-back"></div>
+        <div class="showcase-photo photo-large"><span>THE DAY WE SAID YES</span></div>
+        <div class="showcase-photo photo-small"><span>OUR LITTLE MOMENTS</span></div>
+        <div class="showcase-note"><small>CHAPTER 01</small><strong>All the little<br><em>things.</em></strong><span>made to keep</span></div>
+        <span class="showcase-spark spark-a">✳</span><span class="showcase-spark spark-b">♡</span>
+      </div>
+      <div class="showcase-caption wrap"><span>01 — YOUR STORY, YOUR SPACE</span><span>SCROLL TO FEEL THE STORY ↓</span></div>
+    </section>
+    <section class="moments-strip" data-reveal>
+      <div class="wrap moments-inner">
+        <p class="eyebrow">MADE FOR THE MOMENTS THAT MATTER</p>
+        <div class="moment-words"><span>Anniversary</span><i>✳</i><span>Birthday</span><i>✳</i><span>Wedding</span><i>✳</i><span>Graduation</span><i>✳</i><span>Memories</span></div>
+      </div>
+    </section>
+    <section class="manifesto" id="tentang" data-reveal><div class="wrap"><p class="eyebrow">02 / A NOTE FROM US</p><h2>Because some things<br>are too <em>special</em><br>to be just another post.</h2><p>Foto bisa tersimpan di galeri. Pesan bisa tertinggal di chat. Tapi ada momen yang rasanya ingin kita beri tempat sendiri — tempat yang bisa dibuka lagi, kapan saja.</p><strong>Sela Cerita ♡</strong></div></section>
+    <section class="wrap process" id="cara-kerja" data-reveal><p class="eyebrow">03 / THE PROCESS</p><h2>Simple steps,<br><em>personal</em> story.</h2><div class="steps"><article><b>01</b><h3>Choose a style</h3><p>Pilih template favorit atau ceritakan ide website custom-mu.</p></article><article><b>02</b><h3>Share your details</h3><p>Kirim foto, nama, tanggal, dan detail kecil yang ingin dimasukkan.</p></article><article><b>03</b><h3>Make it yours</h3><p>Kami susun dan personalisasi, lalu kirim preview untuk kamu cek.</p></article><article><b>04</b><h3>Share the moment</h3><p>Website siap dibagikan lewat satu tautan spesial.</p></article></div></section>
+    <section class="custom" data-reveal><div class="wrap"><p class="eyebrow">NOT QUITE YOUR STYLE?</p><h2>Your story.<br><em>Your own design.</em></h2><p>Punya konsep sendiri? Kami juga menerima website custom yang dirancang dari awal, mengikuti cerita dan keinginanmu.</p><a class="button light" href="#pesan">Ceritakan idemu ↗</a></div></section>
+    <section class="wrap order" id="pesan" data-reveal><div><p class="eyebrow">04 / LET'S BEGIN</p><h2>Let's make<br>something <em>meaningful.</em></h2><p class="lead">Mulai dengan cerita singkat. Kami akan menghubungimu untuk membahas detail dan proses berikutnya.</p></div>
       <form id="order-form"><label>Namamu<input name="name" required placeholder="Nama lengkap"></label><label>Kontak WhatsApp<input name="contact" required placeholder="08xxxxxxxxxx"></label><div class="form-row"><label>Untuk momen apa?<select name="occasion" required><option value="">Pilih momen</option><option>Anniversary</option><option>Birthday</option><option>Wedding</option><option>Graduation</option><option>Digital memories</option><option>Other</option></select></label><label>Template pilihan<select name="template"><option>Belum menentukan</option><option>Bloom</option><option>Chapter</option><option>Playdate</option><option>Custom design</option></select></label></div><label>Nama pasangan (opsional)<input name="partner" placeholder="Nama kamu & pasangan"></label>
         <label>Tanggal spesial<input name="event_date" type="date"></label>
         <label>Ceritakan sedikit tentang idemu<textarea name="details" rows="4" placeholder="Tanggal spesial, konsep, warna favorit, atau pesan yang ingin dimasukkan..."></textarea></label>

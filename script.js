@@ -99,3 +99,22 @@ if (form) form.addEventListener("submit", event => {
   status.textContent = "WhatsApp terbuka. Jangan lupa lampirkan foto pilihanmu di chat.";
 });
 window.addEventListener("beforeunload", clearPreview);
+
+
+// Gentle scroll reveals — content remains visible if motion APIs are unavailable.
+(() => {
+  const revealItems = document.querySelectorAll("[data-reveal]");
+  if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    revealItems.forEach(item => item.classList.add("is-visible"));
+    return;
+  }
+  const observer = new IntersectionObserver((entries, activeObserver) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        activeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -45px 0px" });
+  revealItems.forEach(item => observer.observe(item));
+})();
