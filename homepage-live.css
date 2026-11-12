@@ -510,3 +510,45 @@ footer .brand:hover{color:#efb99f}
 @media(max-width:760px) {
   .ticker { width:100vw !important; margin-left:calc(50% - 50vw) !important; margin-right:calc(50% - 50vw) !important; border-radius:0 !important; }
 }
+
+
+/* Final clean composition: one card, one sticker, one continuous ticker */
+@media (min-width: 1024px) {
+  .hero-art {
+    left: 0 !important;
+    transform: none !important;
+  }
+  .hero-art .sticker {
+    top: 14% !important;
+    left: 12% !important;
+    padding: 12px 16px !important;
+    border-radius: 6px 6px 6px 18px !important;
+    transform: rotate(-6deg) !important;
+    box-shadow: 0 12px 30px rgba(80,56,49,.10);
+  }
+}
+.ticker {
+  display: block !important;
+  position: relative !important;
+  width: 100vw !important;
+  max-width: none !important;
+  margin: 0 0 0 calc(50% - 50vw) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+}
+.ticker:before,.ticker:after { display:none !important; }
+.ticker-track {
+  display: flex !important;
+  width: max-content !important;
+  animation: ticker-move 32s linear infinite !important;
+}
+.ticker-track span {
+  flex: none !important;
+  padding: 17px 0 !important;
+  white-space: nowrap !important;
+}
+.button,.nav-cta,.nav-login {
+  border-radius: 999px !important;
+}
