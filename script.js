@@ -1,5 +1,5 @@
 // Ganti dengan nomor WhatsApp admin format internasional tanpa tanda +, contoh 62812xxxxxxx.
-const SELA_WHATSAPP_NUMBER = "";
+const SELA_WHATSAPP_NUMBER = "6285110509056";
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".nav-links");
 if (toggle && nav) {
