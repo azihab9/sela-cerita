@@ -15,6 +15,9 @@
 
 .personalize-fab,.music-fab{position:fixed;right:20px;z-index:15;border:0;border-radius:30px;padding:13px 17px;box-shadow:0 8px 25px #51383b25;font-size:10px;font-weight:700}.personalize-fab{bottom:20px;background:#49383a;color:#fff}.music-fab{bottom:70px;background:#fff9f5;color:#805f62;border:1px solid #ead4d1}.settings-dialog{width:min(440px,calc(100% - 28px));border:1px solid #ead4d1;border-radius:14px;padding:28px;background:#fff9f5;color:var(--ink);box-shadow:0 25px 80px #30202340}.settings-dialog::backdrop{background:#24191ab8;backdrop-filter:blur(4px)}.settings-dialog h2{font:500 30px var(--serif);margin:0 0 8px}.settings-dialog>p{font-size:11px;line-height:1.7;color:var(--muted);margin:0 0 20px}.settings-dialog label{display:grid;gap:7px;margin:13px 0;font-size:10px;font-weight:700}.settings-dialog input{width:100%;padding:12px;border:1px solid #e4cfcc;background:white;color:var(--ink);font:12px var(--sans);border-radius:5px}.dialog-actions{display:flex;gap:10px;margin-top:20px}.dialog-actions button{flex:1;padding:12px;border-radius:30px;border:1px solid #d9b6b3;background:transparent;color:#805f62;font-size:10px}.dialog-actions button[type=submit]{background:var(--ink);color:white;border-color:var(--ink)}.demo-hint{font-size:9px!important;color:#a18b89!important;margin-top:12px!important}
 @media(max-width:760px){.personalize-fab,.music-fab{right:12px;padding:12px 14px}.personalize-fab{bottom:12px}.music-fab{bottom:60px}.settings-dialog{padding:22px}}
+
+.photo-upload-panel{max-width:680px;margin:35px auto 0;padding:22px;background:#fff9f5;border:1px dashed #d9b6b3;border-radius:8px;text-align:left}.photo-upload-panel h3{font:500 21px var(--serif);margin:0 0 7px}.photo-upload-panel p{font-size:10px;line-height:1.7;color:var(--muted);margin:0 0 15px}.upload-label{display:inline-flex;align-items:center;gap:9px;padding:12px 17px;border-radius:30px;background:var(--ink);color:white;font-size:10px;font-weight:700;cursor:pointer}.upload-label input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}.upload-status{font-size:9px!important;color:#987779!important;margin-top:12px!important}.gallery-grid img{background:#f0dcd8}
+@media(max-width:760px){.photo-upload-panel{padding:18px}}
 </style>
 </head>
 <body>
@@ -32,7 +35,7 @@
 <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=85" alt="Momen hangat bersama" loading="lazy">
 <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=85" alt="Pasangan saling berpelukan" loading="lazy">
 <img src="https://images.unsplash.com/photo-1529335764857-3f1164d1cb24?auto=format&fit=crop&w=1100&q=85" alt="Pasangan menikmati waktu bersama" loading="lazy">
-</div></section>
+</div><div class="photo-upload-panel"><h3>Make this gallery yours ♡</h3><p>Pilih sampai 5 foto dari perangkatmu. Foto pertama akan menjadi foto utama, sisanya mengisi galeri. Preview ini hanya tersimpan sementara di browser dan tidak diunggah ke server.</p><label class="upload-label">＋ Choose your photos<input id="photo-upload" type="file" accept="image/*" multiple></label><p class="upload-status" id="upload-status" aria-live="polite">Belum ada foto pribadi yang dipilih.</p></div></section>
 <section class="section center" id="letter"><p class="eyebrow">03 / A LITTLE SOMETHING FOR YOU</p><h2>Words from my <em>heart.</em></h2><div class="letter-wrap"><div class="letter-top">OPEN WHEN YOU NEED A REMINDER ♡</div><h3>Dear, my favorite human.</h3><p>Kalau suatu hari dunia terasa terlalu ramai, semoga halaman kecil ini mengingatkanmu bahwa ada begitu banyak hal sederhana yang patut kita syukuri.</p><div class="letter-hidden" id="hidden-letter"><p>Terima kasih sudah hadir dalam cerita ini. Terima kasih untuk sabar, tawa, obrolan sampai lupa waktu, dan semua hal kecil yang mungkin terlihat biasa tapi selalu berarti.</p><p>Aku nggak tahu semua halaman berikutnya akan seperti apa. Tapi kalau boleh memilih, aku ingin terus menulisnya bersamamu.</p><p>With all my love,<br><i>Your person ♡</i></p></div><button class="letter-button" id="open-letter" type="button">Open your little letter ♡</button></div></section>
 <section class="closing"><p class="eyebrow">TO BE CONTINUED...</p><h2>My favorite place<br>is next to you.</h2><p>One story. Two hearts. Countless little moments.</p><div class="heart">♡</div></section>
 </main>
@@ -76,6 +79,26 @@ document.getElementById("personalize-form").addEventListener("submit",event=>{
  document.querySelector(".counter h2").textContent=first&&second?"Every day, "+first+" & "+second+".":"Every day, a little more us.";
  updateCounter();settingsDialog.close();
 });
+const photoInput=document.getElementById("photo-upload");
+const uploadStatus=document.getElementById("upload-status");
+const objectUrls=[];
+photoInput.addEventListener("change",()=>{
+ const files=Array.from(photoInput.files||[]);
+ if(!files.length)return;
+ if(files.length>5){uploadStatus.textContent="Maksimal 5 foto ya. Pilih ulang maksimal 5 foto.";photoInput.value="";return;}
+ if(files.some(file=>!file.type.startsWith("image/"))){uploadStatus.textContent="Ada file yang bukan gambar. Pilih file gambar saja.";photoInput.value="";return;}
+ objectUrls.forEach(url=>URL.revokeObjectURL(url));objectUrls.length=0;
+ const urls=files.map(file=>{const url=URL.createObjectURL(file);objectUrls.push(url);return url;});
+ const heroImage=document.querySelector(".hero-photo img");
+ heroImage.src=urls[0];heroImage.alt="Foto pilihan kamu";
+ const galleryImages=Array.from(document.querySelectorAll(".gallery-grid img"));
+ galleryImages.forEach((img,index)=>{
+  if(urls[index+1]){img.src=urls[index+1];img.alt="Foto kenangan pilihan kamu "+(index+1);img.style.display="block";}
+  else if(index>0){img.style.display="none";}
+ });
+ uploadStatus.textContent=files.length+" foto berhasil dimuat untuk preview di perangkat ini.";
+});
+window.addEventListener("beforeunload",()=>objectUrls.forEach(url=>URL.revokeObjectURL(url)));
 document.getElementById("open-letter").addEventListener("click",()=>{const letter=document.getElementById("hidden-letter");const show=letter.classList.toggle("show");document.getElementById("open-letter").textContent=show?"Close your little letter ♡":"Open your little letter ♡"});
 const box=document.getElementById("lightbox"),large=document.getElementById("lightbox-image");
 document.querySelectorAll(".gallery-grid img").forEach(img=>img.addEventListener("click",()=>{large.src=img.src;large.alt=img.alt;box.classList.add("open")}));
