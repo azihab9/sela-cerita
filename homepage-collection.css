@@ -764,3 +764,15 @@ footer .brand:hover{color:#efb99f}
     transition: none !important;
   }
 }
+
+
+/* Keep the hero CTA at its natural button width inside the stretched copy panel */
+@media (min-width: 1024px) {
+  .hero-copy > .button {
+    align-self: flex-start !important;
+    display: inline-flex !important;
+    width: max-content !important;
+    max-width: max-content !important;
+    flex: 0 0 auto !important;
+  }
+}
