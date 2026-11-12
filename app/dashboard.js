@@ -38,7 +38,7 @@ function renderProjects(projects){
  document.querySelector("#draft-count").textContent=projects.filter(p=>p.status==="draft"||p.status==="pending_payment").length;
  document.querySelector("#published-count").textContent=projects.filter(p=>p.status==="published").length;
  document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.go)));
- document.querySelectorAll("[data-project-id]").forEach(b=>b.addEventListener("click",()=>notify("Project tersimpan. Editor Guided akan kita sambungkan pada tahap berikutnya.")));
+ document.querySelectorAll("[data-project-id]").forEach(b=>b.addEventListener("click",()=>{location.href="editor.html?id="+encodeURIComponent(b.dataset.projectId);}));
 }
 async function loadTemplates(){
  const grid=document.querySelector("#template-grid");
