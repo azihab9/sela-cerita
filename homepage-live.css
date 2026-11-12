@@ -552,3 +552,40 @@ footer .brand:hover{color:#efb99f}
 .button,.nav-cta,.nav-login {
   border-radius: 999px !important;
 }
+
+
+/* Match both hero content panels to their full grid-column bounds */
+@media (min-width: 1024px) {
+  .hero {
+    align-items: stretch !important;
+  }
+  .hero-copy {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    align-self: stretch !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hero-art {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    align-self: stretch !important;
+    display: grid;
+    place-items: center;
+  }
+}
+
+/* Keep the ticker edge-to-edge without creating a horizontal scrollbar */
+.ticker {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+}
