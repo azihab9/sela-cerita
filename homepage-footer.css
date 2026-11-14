@@ -1902,3 +1902,45 @@ footer small {
     z-index: 7 !important;
   }
 }
+
+
+/* Anchor the floating note to the card itself, not the clipped hero canvas */
+@media (min-width: 1024px) {
+  .hero-art .memory-card-wrap {
+    position: relative !important;
+    width: min(365px, 82%) !important;
+    display: grid !important;
+    place-items: center !important;
+    isolation: isolate;
+  }
+  .hero-art .memory-card-wrap .memory-card {
+    width: 100% !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  .hero-art .memory-card-wrap > .sticker {
+    position: absolute !important;
+    top: -18px !important;
+    left: -18px !important;
+    right: auto !important;
+    z-index: 3 !important;
+    padding: 12px 16px !important;
+    transform: rotate(-6deg) !important;
+    animation: memory-sticker-float 5.2s ease-in-out infinite !important;
+  }
+}
+@media (max-width: 1023px) {
+  .hero-art .memory-card-wrap {
+    position: relative;
+    width: min(365px, 82%);
+    display: grid;
+    place-items: center;
+  }
+  .hero-art .memory-card-wrap .memory-card { width: 100%; }
+  .hero-art .memory-card-wrap > .sticker {
+    top: -12px !important;
+    left: -10px !important;
+    right: auto !important;
+    z-index: 3 !important;
+  }
+}
