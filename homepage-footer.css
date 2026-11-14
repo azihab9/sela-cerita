@@ -1986,3 +1986,28 @@ footer small {
     box-sizing: border-box !important;
   }
 }
+
+
+/* Restore a compact, balanced hero preview card */
+@media (min-width: 1024px) {
+  .hero-art .memory-card-wrap {
+    width: 260px !important;
+    max-width: 260px !important;
+  }
+  .hero-art .memory-card-wrap .memory-card {
+    width: 260px !important;
+    max-width: 260px !important;
+    box-sizing: border-box !important;
+    padding: 23px 22px 19px !important;
+  }
+  .hero-art .memory-card-wrap .memory-card h2 {
+    font-size: 32px !important;
+    line-height: 1.08 !important;
+    margin: 13px 0 !important;
+  }
+  .hero-art .memory-card-wrap .memory-card .photos {
+    height: 100px !important;
+    gap: 8px !important;
+    margin-bottom: 13px !important;
+  }
+}
