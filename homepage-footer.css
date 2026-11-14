@@ -1974,3 +1974,15 @@ footer small {
     left: -18px !important;
   }
 }
+
+
+/* Preserve the original compact preview-card width */
+@media (min-width: 1024px) {
+  .hero-art .memory-card-wrap {
+    width: 300px !important;
+  }
+  .hero-art .memory-card-wrap .memory-card {
+    width: 300px !important;
+    box-sizing: border-box !important;
+  }
+}
