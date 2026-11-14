@@ -1,0 +1,71 @@
+
+/* Page reset for full-page demo layouts */
+body.chapter,body.playdate{display:block!important;place-items:initial!important;padding:0!important;min-height:100vh;overflow-x:hidden}
+.demo-site{width:100%;min-height:100vh;padding:0;background:var(--demo-paper,#f7f1ec);color:var(--demo-ink,#292526);display:block}
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#d8cbdc">
+<meta name="description" content="Chapter — an editorial memory website demo by Sela Cerita.">
+<title>Chapter — A story of us | Sela Cerita</title>
+<link rel="stylesheet" href="demo.css?v=chapter-story-2">
+</head>
+<body class="chapter">
+<div class="demo-site chapter-site">
+<header class="demo-nav">
+  <a class="demo-brand" href="../index.html#koleksi">SELA CERITA <span>✳</span></a>
+  <nav><a href="#chapters">Chapters</a><a href="#gallery">Gallery</a><a href="#note">A note</a></nav>
+  <a class="demo-back-link" href="../index.html#koleksi">Back to collection ↗</a>
+</header>
+<main class="demo-main">
+  <section class="chapter-hero" id="home">
+    <div class="chapter-hero-copy">
+      <small>VOLUME 01 · OUR STORY</small>
+      <h1>CHAPTER<br><em>of us.</em></h1>
+      <p>Setiap cerita punya awal. Ini halaman pertama dari banyak hal yang masih ingin kita tulis bersama.</p>
+      <a class="demo-text-link" href="#chapters">TURN THE PAGE ↓</a>
+    </div>
+    <div class="chapter-cover" aria-label="Book cover illustration">
+      <span class="cover-index">A COLLECTION OF LITTLE MOMENTS</span>
+      <strong>Our<br><em>favorite</em><br>chapter.</strong>
+      <span class="cover-date">EST. 14 FEBRUARY 2021</span>
+      <i>01</i>
+    </div>
+  </section>
+  <section class="chapter-intro" id="chapters">
+    <small>THE STORY SO FAR</small>
+    <h2>Not every page<br>needs to be <em>perfect.</em></h2>
+    <p>Some are messy, some are beautiful. The best ones are the pages we get to write side by side.</p>
+  </section>
+  <section class="chapter-list">
+    <article class="chapter-entry"><span>01 / THE BEGINNING</span><div><h3>The first hello.</h3><p>Awalnya sederhana. Satu percakapan kecil yang ternyata membuka begitu banyak cerita.</p></div><b>2021</b></article>
+    <article class="chapter-entry"><span>02 / THE LITTLE THINGS</span><div><h3>Our ordinary days.</h3><p>Obrolan tanpa akhir, tawa yang datang tiba-tiba, dan hal-hal kecil yang akhirnya jadi favorit.</p></div><b>2022</b></article>
+    <article class="chapter-entry"><span>03 / STILL BECOMING</span><div><h3>More pages to write.</h3><p>Kita masih belajar, tumbuh, dan memilih untuk saling menemani di halaman berikutnya.</p></div><b>NOW</b></article>
+  </section>
+  <section class="chapter-gallery" id="gallery">
+    <div><small>BETWEEN THE LINES</small><h2>Little scenes<br><em>we keep.</em></h2></div>
+    <div class="chapter-photo-grid">
+      <figure><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=85" alt="A couple walking together"><figcaption>THE WAY WE GO</figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=85" alt="A warm moment together"><figcaption>THE LITTLE THINGS</figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=85" alt="A quiet embrace"><figcaption>RIGHT HERE, ALWAYS</figcaption></figure>
+    </div>
+  </section>
+  <section class="chapter-note" id="note">
+    <small>CHAPTER 04 · A NOTE FOR YOU</small>
+    <h2>And the story<br><em>goes on.</em></h2>
+    <p>Kalau boleh memilih, aku ingin terus menulis cerita ini bersamamu. Satu halaman, satu hari, satu kenangan dalam satu waktu.</p>
+    <button class="demo-action" id="turnPage" type="button">OPEN A LITTLE NOTE ↗</button>
+    <p class="chapter-hidden-note" id="chapterNext" hidden>For all the chapters we haven't lived yet — I'm glad it's you. ♡</p>
+  </section>
+</main>
+<footer class="demo-footer"><a href="../index.html#koleksi">← BACK TO SELA CERITA</a><span>MADE OF MEMORIES · CHAPTER</span></footer>
+</div>
+<script>
+document.getElementById("turnPage").addEventListener("click",function(){
+ const note=document.getElementById("chapterNext");note.hidden=!note.hidden;
+ this.textContent=note.hidden?"OPEN A LITTLE NOTE ↗":"CLOSE THIS NOTE ↙";
+ if(!note.hidden)note.scrollIntoView({behavior:"smooth",block:"center"});
+});
+</script>
+</body></html>
