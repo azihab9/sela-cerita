@@ -3,31 +3,47 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#b8c2aa">
-<title>Playdate — Sela Cerita</title>
-<link rel="stylesheet" href="demo.css?v=interactive-1">
+<meta name="description" content="Playdate — a colorful little memory website demo by Sela Cerita.">
+<title>Playdate — Good Times Only | Sela Cerita</title>
+<link rel="stylesheet" href="demo.css?v=playdate-story-2">
 </head>
 <body class="playdate">
-<a class="demo-back" href="../index.html#koleksi">← Kembali ke koleksi</a>
-<main class="demo-page">
-  <small>OUR FAVORITE KIND OF CHAOS</small>
-  <h1>GOOD<br><em>TIMES</em><br>ONLY!</h1>
-  <p>Foto blur, tawa terlalu keras, dan rencana spontan. Hal-hal kecil yang justru bikin hari terasa besar.</p>
-  <button class="demo-action" id="replay" type="button">LET'S REPLAY THIS DAY <span>✳</span></button>
-  <p class="replay-note" id="replayNote" aria-live="polite">Tap untuk membuka satu kenangan kecil.</p>
+<div class="demo-site playdate-site">
+<header class="demo-nav">
+  <a class="demo-brand" href="../index.html#koleksi">SELA CERITA <span>✳</span></a>
+  <nav><a href="#moments">Moments</a><a href="#gallery">The gallery</a><a href="#replay">Surprise</a></nav>
+  <a class="demo-back-link" href="../index.html#koleksi">Back to collection ↗</a>
+</header>
+<main class="demo-main">
+  <section class="play-hero">
+    <div class="play-hero-copy"><small>OUR FAVORITE KIND OF CHAOS</small><h1>GOOD<br><em>TIMES</em><br>ONLY!</h1><p>Foto blur, tawa terlalu keras, dan rencana spontan. Hal-hal kecil yang justru bikin hari terasa besar.</p><a href="#moments" class="demo-text-link">LET'S HAVE A LOOK ↓</a></div>
+    <div class="play-sticker sticker-one">NO<br>BAD<br>DAYS ✳</div>
+    <div class="play-hero-photo"><img src="https://images.unsplash.com/photo-1529335764857-3f1164d1cb24?auto=format&fit=crop&w=1100&q=85" alt="Friends enjoying a happy day together"><span>THE DAYS WE NEVER PLANNED</span></div>
+    <div class="play-sticker sticker-two">best day<br>ever ♡</div>
+  </section>
+  <section class="play-intro" id="moments"><small>THE GOOD STUFF</small><h2>Collecting moments,<br><em>not perfect pictures.</em></h2><p>Karena kenangan paling seru sering datang tanpa rencana. Ini beberapa hal kecil yang layak dirayakan.</p></section>
+  <section class="play-moments">
+    <article><b>01</b><span>THE RANDOM PLANS</span><h3>Let's just go.</h3><p>Berangkat tanpa itinerary, pulang dengan cerita satu minggu.</p></article>
+    <article><b>02</b><span>THE LOUD LAUGHS</span><h3>Can't stop laughing.</h3><p>Humor receh yang entah kenapa selalu berhasil.</p></article>
+    <article><b>03</b><span>THE LITTLE WINS</span><h3>We made a day.</h3><p>Hari biasa yang berubah jadi salah satu favorit kita.</p></article>
+  </section>
+  <section class="play-gallery" id="gallery"><div class="play-gallery-head"><small>CAMERA ROLL CONFESSIONS</small><h2>Proof that<br><em>we had fun.</em></h2></div>
+    <div class="play-photo-grid">
+      <figure class="photo-tall"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=85" alt="Walking together"><figcaption>JUST BECAUSE</figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=85" alt="A happy moment"><figcaption>THE USUAL US</figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=85" alt="A warm embrace"><figcaption>ONE FOR THE BOOKS</figcaption></figure>
+    </div>
+  </section>
+  <section class="play-replay" id="replay"><small>A TINY SURPRISE</small><h2>Need a little<br><em>pick-me-up?</em></h2><p>Tap the button. Let's bring back one happy thought.</p><button class="demo-action" id="replayButton" type="button">PICK A MEMORY ✳</button><div class="replay-note" id="replayNote" aria-live="polite">Your next favorite memory is one tap away.</div></section>
 </main>
+<footer class="demo-footer"><a href="../index.html#koleksi">← BACK TO SELA CERITA</a><span>GOOD TIMES ONLY · PLAYDATE</span></footer>
+</div>
 <script>
-const moments=[
-  "Ketawa sampai lupa mau cerita apa.",
-  "Satu foto blur yang tetap jadi favorit.",
-  "Rencana dadakan yang ternyata paling seru.",
-  "Hari biasa yang diam-diam jadi istimewa."
-];
-let momentIndex=-1;
-document.getElementById("replay").addEventListener("click",function(){
-  momentIndex=(momentIndex+1)%moments.length;
-  document.getElementById("replayNote").textContent=moments[momentIndex];
-  this.querySelector("span").textContent="♡";
+const memories=["Ketawa sampai lupa mau cerita apa.","Satu foto blur yang tetap jadi favorit.","Rencana dadakan yang ternyata paling seru.","Hari biasa yang diam-diam jadi istimewa.","Jangan lupa: hal kecil juga pantas dirayakan."];
+let previous=-1;
+document.getElementById("replayButton").addEventListener("click",()=>{
+ let next;do{next=Math.floor(Math.random()*memories.length)}while(next===previous&&memories.length>1);previous=next;
+ const note=document.getElementById("replayNote");note.textContent=memories[next];note.classList.remove("pop");void note.offsetWidth;note.classList.add("pop");
 });
 </script>
-</body>
-</html>
+</body></html>
