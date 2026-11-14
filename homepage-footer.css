@@ -1747,3 +1747,14 @@ footer small {
     z-index: 7 !important;
   }
 }
+
+
+/* Place the floating note fully above-left of the preview card */
+@media (min-width: 1024px) {
+  .hero-art > .sticker {
+    top: -12% !important;
+    left: -5% !important;
+    right: auto !important;
+    z-index: 7 !important;
+  }
+}
