@@ -1631,3 +1631,46 @@ footer small {
   .hero.wrap { width: calc(100% - 9vw) !important; }
   .hero-copy h1 { font-size: clamp(52px, 5vw, 64px) !important; }
 }
+
+
+/* Hero headline — scale the typography to occupy the left composition */
+@media (min-width: 1024px) {
+  .hero-copy {
+    padding: 0 12px 0 0 !important;
+    justify-content: center !important;
+    gap: 0 !important;
+  }
+  .hero-copy > .eyebrow {
+    margin-bottom: clamp(20px, 2.2vh, 28px) !important;
+    font-size: 9px !important;
+    letter-spacing: 2.4px !important;
+  }
+  .hero-copy h1 {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: clamp(70px, 5.7vw, 92px) !important;
+    line-height: .98 !important;
+    letter-spacing: -4.5px !important;
+    white-space: normal !important;
+  }
+  .hero-copy .lead {
+    max-width: 560px !important;
+    margin: clamp(20px, 2.3vh, 28px) 0 22px !important;
+    font-size: 14px !important;
+    line-height: 1.85 !important;
+  }
+  .hero-copy .button {
+    padding: 16px 22px !important;
+    font-size: 11px !important;
+  }
+  .hero-copy .note {
+    margin-top: clamp(22px, 2.7vh, 32px) !important;
+    font-size: 13px !important;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1300px) {
+  .hero-copy h1 {
+    font-size: clamp(62px, 5.5vw, 74px) !important;
+    letter-spacing: -3.5px !important;
+  }
+}
