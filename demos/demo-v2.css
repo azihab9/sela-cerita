@@ -2,70 +2,136 @@
 /* Page reset for full-page demo layouts */
 body.chapter,body.playdate{display:block!important;place-items:initial!important;padding:0!important;min-height:100vh;overflow-x:hidden}
 .demo-site{width:100%;min-height:100vh;padding:0;background:var(--demo-paper,#f7f1ec);color:var(--demo-ink,#292526);display:block}
-<!doctype html>
-<html lang="id">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#d8cbdc">
-<meta name="description" content="Chapter — an editorial memory website demo by Sela Cerita.">
-<title>Chapter — A story of us | Sela Cerita</title>
-<link rel="stylesheet" href="demo.css?v=chapter-story-2">
-</head>
-<body class="chapter">
-<div class="demo-site chapter-site">
-<header class="demo-nav">
-  <a class="demo-brand" href="../index.html#koleksi">SELA CERITA <span>✳</span></a>
-  <nav><a href="#chapters">Chapters</a><a href="#gallery">Gallery</a><a href="#note">A note</a></nav>
-  <a class="demo-back-link" href="../index.html#koleksi">Back to collection ↗</a>
-</header>
-<main class="demo-main">
-  <section class="chapter-hero" id="home">
-    <div class="chapter-hero-copy">
-      <small>VOLUME 01 · OUR STORY</small>
-      <h1>CHAPTER<br><em>of us.</em></h1>
-      <p>Setiap cerita punya awal. Ini halaman pertama dari banyak hal yang masih ingin kita tulis bersama.</p>
-      <a class="demo-text-link" href="#chapters">TURN THE PAGE ↓</a>
-    </div>
-    <div class="chapter-cover" aria-label="Book cover illustration">
-      <span class="cover-index">A COLLECTION OF LITTLE MOMENTS</span>
-      <strong>Our<br><em>favorite</em><br>chapter.</strong>
-      <span class="cover-date">EST. 14 FEBRUARY 2021</span>
-      <i>01</i>
-    </div>
-  </section>
-  <section class="chapter-intro" id="chapters">
-    <small>THE STORY SO FAR</small>
-    <h2>Not every page<br>needs to be <em>perfect.</em></h2>
-    <p>Some are messy, some are beautiful. The best ones are the pages we get to write side by side.</p>
-  </section>
-  <section class="chapter-list">
-    <article class="chapter-entry"><span>01 / THE BEGINNING</span><div><h3>The first hello.</h3><p>Awalnya sederhana. Satu percakapan kecil yang ternyata membuka begitu banyak cerita.</p></div><b>2021</b></article>
-    <article class="chapter-entry"><span>02 / THE LITTLE THINGS</span><div><h3>Our ordinary days.</h3><p>Obrolan tanpa akhir, tawa yang datang tiba-tiba, dan hal-hal kecil yang akhirnya jadi favorit.</p></div><b>2022</b></article>
-    <article class="chapter-entry"><span>03 / STILL BECOMING</span><div><h3>More pages to write.</h3><p>Kita masih belajar, tumbuh, dan memilih untuk saling menemani di halaman berikutnya.</p></div><b>NOW</b></article>
-  </section>
-  <section class="chapter-gallery" id="gallery">
-    <div><small>BETWEEN THE LINES</small><h2>Little scenes<br><em>we keep.</em></h2></div>
-    <div class="chapter-photo-grid">
-      <figure><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=85" alt="A couple walking together"><figcaption>THE WAY WE GO</figcaption></figure>
-      <figure><img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=85" alt="A warm moment together"><figcaption>THE LITTLE THINGS</figcaption></figure>
-      <figure><img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=85" alt="A quiet embrace"><figcaption>RIGHT HERE, ALWAYS</figcaption></figure>
-    </div>
-  </section>
-  <section class="chapter-note" id="note">
-    <small>CHAPTER 04 · A NOTE FOR YOU</small>
-    <h2>And the story<br><em>goes on.</em></h2>
-    <p>Kalau boleh memilih, aku ingin terus menulis cerita ini bersamamu. Satu halaman, satu hari, satu kenangan dalam satu waktu.</p>
-    <button class="demo-action" id="turnPage" type="button">OPEN A LITTLE NOTE ↗</button>
-    <p class="chapter-hidden-note" id="chapterNext" hidden>For all the chapters we haven't lived yet — I'm glad it's you. ♡</p>
-  </section>
-</main>
-<footer class="demo-footer"><a href="../index.html#koleksi">← BACK TO SELA CERITA</a><span>MADE OF MEMORIES · CHAPTER</span></footer>
-</div>
-<script>
-document.getElementById("turnPage").addEventListener("click",function(){
- const note=document.getElementById("chapterNext");note.hidden=!note.hidden;
- this.textContent=note.hidden?"OPEN A LITTLE NOTE ↗":"CLOSE THIS NOTE ↙";
- if(!note.hidden)note.scrollIntoView({behavior:"smooth",block:"center"});
-});
-</script>
-</body></html>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:24px;display:grid;place-items:center;font-family:"DM Sans",sans-serif;color:#292526}body>a{position:absolute;top:25px;left:25px;font-size:11px}main{width:min(700px,100%);min-height:560px;padding:clamp(30px,7vw,75px);display:flex;flex-direction:column;justify-content:center;text-align:center}small{font-size:9px;letter-spacing:2px}h1{font:500 clamp(50px,9vw,85px)/1 var(--serif,"Playfair Display",serif);margin:28px 0}p{max-width:430px;margin:0 auto;font-size:12px;line-height:1.9}main span{margin-top:35px;font-size:13px}.bloom{background:#e9c8b8;color:#694f4d}.chapter{background:#d8cbdc;color:#443d48}.chapter h1{font-weight:700;letter-spacing:-4px}.chapter h1 em{font-weight:500}.playdate{background:#b8c2aa;color:#3b4436}.playdate h1{font:700 clamp(65px,13vw,110px)/.82 "DM Sans",sans-serif;letter-spacing:-8px}.playdate h1 em{font:italic 500 .9em "Playfair Display",serif;color:#f5e0c9}
+/* Demo interactions shared by Chapter and Playdate */
+.demo-back{position:absolute;top:25px;left:25px;font-size:11px;letter-spacing:.04em;opacity:.72}
+.demo-page{position:relative}
+.demo-action{align-self:center;margin-top:34px;padding:13px 19px;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;font-size:10px;font-weight:700;letter-spacing:1.4px;transition:transform .25s ease,background .25s ease}
+.demo-action:hover{transform:translateY(-3px);background:rgba(255,255,255,.2)}
+.demo-action span{margin-left:8px}
+.demo-reveal{margin:44px auto 0;padding:28px 20px 0;border-top:1px solid currentColor;max-width:440px;animation:demo-enter .55s ease both}
+.demo-reveal h2{font:500 clamp(34px,6vw,52px)/1.05 "Playfair Display",Georgia,serif;margin:18px 0}
+.demo-reveal h2 em{color:#8d7298}
+.demo-reveal p{font-size:12px;line-height:1.9}
+.replay-note{min-height:24px;margin:22px auto 0!important;font-family:"Playfair Display",Georgia,serif;font-style:italic;font-size:16px!important;transition:opacity .2s ease}
+[hidden]{display:none!important}
+@keyframes demo-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.demo-back{top:18px;left:18px}.demo-page{min-height:calc(100vh - 48px)}}
+@media(prefers-reduced-motion:reduce){.demo-action,.demo-reveal{transition:none;animation:none}}
+
+
+/* Full-page Chapter and Playdate demo systems */
+.demo-site{width:100%;min-height:100vh;padding:0;background:var(--demo-paper,#f7f1ec);color:var(--demo-ink,#292526);display:block}
+.demo-nav{height:76px;padding:0 clamp(22px,6vw,88px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(50,40,40,.12);gap:24px}
+.demo-brand{font:600 17px "Playfair Display",Georgia,serif;letter-spacing:-.4px}
+.demo-brand span{margin-left:5px}
+.demo-nav nav{display:flex;gap:26px}
+.demo-nav nav a,.demo-back-link,.demo-footer{font-size:9px;letter-spacing:1.4px;text-transform:uppercase}
+.demo-back-link{opacity:.65}
+.demo-main{width:min(1180px,88vw);margin:auto}
+.demo-main section{scroll-margin-top:90px}
+.chapter-site{--demo-paper:#f2edf3;--demo-ink:#443d48;--demo-accent:#94799d}
+.chapter-hero{min-height:650px;display:grid;grid-template-columns:1fr .8fr;align-items:center;gap:8%;padding:90px 4%}
+.chapter-hero-copy small,.chapter-intro small,.chapter-gallery small,.chapter-note small,.play-hero-copy small,.play-intro small,.play-gallery small,.play-replay small{font-size:9px;letter-spacing:2.2px}
+.chapter-hero h1{font:700 clamp(70px,10vw,132px)/.86 "DM Sans",sans-serif;letter-spacing:-.085em;margin:32px 0 24px}
+.chapter-hero h1 em,.chapter-intro h2 em,.chapter-gallery h2 em,.chapter-note h2 em{font:italic 500 1em "Playfair Display",Georgia,serif;color:var(--demo-accent);letter-spacing:-.04em}
+.chapter-hero-copy p,.chapter-intro p,.chapter-note>p,.play-hero-copy p,.play-intro p,.play-replay>p{max-width:390px;font-size:13px;line-height:1.9;margin:0}
+.demo-text-link{display:inline-block;margin-top:32px;padding-bottom:8px;border-bottom:1px solid currentColor;font-size:9px;letter-spacing:1.8px}
+.chapter-cover{width:min(360px,100%);aspect-ratio: .76;background:#e2d7e5;border:1px solid #c8b8ce;box-shadow:18px 22px 0 #d4c7d8;padding:34px;display:flex;flex-direction:column;justify-content:space-between;transform:rotate(3deg);position:relative}
+.chapter-cover:before{content:"";position:absolute;inset:12px;border:1px solid #ffffff99;pointer-events:none}
+.chapter-cover .cover-index,.chapter-cover .cover-date{font-size:8px;letter-spacing:1.8px}
+.chapter-cover strong{font:500 clamp(38px,5vw,58px)/1.03 "Playfair Display",Georgia,serif}
+.chapter-cover strong em{color:#92759c}
+.chapter-cover>i{font:italic 22px "Playfair Display",serif;align-self:flex-end}
+.chapter-intro{text-align:center;padding:110px 20px 65px}
+.chapter-intro h2,.chapter-gallery h2,.chapter-note h2,.play-intro h2,.play-gallery h2,.play-replay h2{font:500 clamp(42px,6vw,70px)/1.02 "Playfair Display",Georgia,serif;letter-spacing:-2px;margin:22px 0}
+.chapter-intro p{margin:auto}
+.chapter-list{border-top:1px solid #c9becb}
+.chapter-entry{display:grid;grid-template-columns:.8fr 2fr .4fr;gap:25px;align-items:start;padding:34px 10px;border-bottom:1px solid #c9becb}
+.chapter-entry>span,.chapter-entry>b{font-size:8px;letter-spacing:1.6px}
+.chapter-entry h3{font:500 31px "Playfair Display",Georgia,serif;margin:0 0 10px}
+.chapter-entry p{font-size:12px;line-height:1.8;margin:0;max-width:480px}
+.chapter-entry>b{text-align:right}
+.chapter-gallery{padding:110px 0}
+.chapter-gallery h2{margin-bottom:40px}
+.chapter-photo-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:16px;align-items:start}
+.chapter-photo-grid figure,.play-photo-grid figure{margin:0}
+.chapter-photo-grid figure:nth-child(2){margin-top:50px}
+.chapter-photo-grid img,.play-photo-grid img{width:100%;height:310px;object-fit:cover;display:block;filter:saturate(.72)}
+.chapter-photo-grid figcaption,.play-photo-grid figcaption{padding-top:12px;font-size:8px;letter-spacing:1.8px}
+.chapter-note{text-align:center;padding:95px 20px 110px;background:#e6dce8;margin:0 calc((88vw - 100vw)/2);padding-left:max(6vw,20px);padding-right:max(6vw,20px)}
+.chapter-note h2{font-size:clamp(48px,7vw,82px)}
+.chapter-note>p{margin:auto}
+.chapter-note .demo-action{margin-top:28px}
+.chapter-hidden-note{max-width:500px!important;margin:26px auto 0!important;font:italic 20px "Playfair Display",Georgia,serif!important;color:#80688a}
+.demo-footer{min-height:86px;padding:25px clamp(22px,6vw,88px);display:flex;justify-content:space-between;align-items:center;gap:18px;border-top:1px solid #c9becb}
+.playdate-site{--demo-paper:#edf0e5;--demo-ink:#394536;--demo-accent:#d18b68}
+.play-hero{min-height:680px;padding:80px 3% 90px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:35px;position:relative}
+.play-hero h1{font:800 clamp(76px,11vw,145px)/.78 "DM Sans",sans-serif;letter-spacing:-.09em;margin:30px 0}
+.play-hero h1 em{font:italic 500 .88em "Playfair Display",Georgia,serif;color:#d18b68;letter-spacing:-.07em}
+.play-hero-copy p{max-width:370px}
+.play-hero-photo{position:relative;transform:rotate(2deg);background:#fff;padding:12px 12px 42px;box-shadow:0 22px 50px #37412d22}
+.play-hero-photo img{width:100%;height:390px;object-fit:cover;display:block}
+.play-hero-photo span{position:absolute;bottom:15px;left:18px;font-size:8px;letter-spacing:1.5px}
+.play-sticker{position:absolute;z-index:2;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:11px;font-weight:700;letter-spacing:1px;line-height:1.25}
+.sticker-one{top:110px;right:43%;width:95px;height:95px;background:#e4b18f;color:#fff8e9;transform:rotate(-12deg)}
+.sticker-two{right:2%;bottom:100px;width:104px;height:104px;background:#d9c8df;color:#6b596e;transform:rotate(9deg);font-family:"Playfair Display",serif;font-style:italic}
+.play-intro{text-align:center;padding:95px 20px 55px}
+.play-intro p{margin:auto}
+.play-moments{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:25px 0 110px}
+.play-moments article{position:relative;min-height:250px;padding:28px;background:#dce3d1;border-radius:4px}
+.play-moments article:nth-child(2){background:#e8d8cd;transform:translateY(25px)}
+.play-moments article:nth-child(3){background:#ded5e2}
+.play-moments b{font:italic 26px "Playfair Display",serif}
+.play-moments span{display:block;margin-top:28px;font-size:8px;letter-spacing:1.5px}
+.play-moments h3{font:500 27px "Playfair Display",serif;margin:10px 0}
+.play-moments p{font-size:11px;line-height:1.8;margin:0}
+.play-gallery{padding:70px 0 110px}
+.play-gallery h2{margin-bottom:35px}
+.play-photo-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:16px;align-items:start}
+.play-photo-grid figure:nth-child(2){margin-top:45px}
+.play-photo-grid figure:nth-child(3){margin-top:90px}
+.play-photo-grid img{height:290px}
+.play-photo-grid .photo-tall img{height:400px}
+.play-replay{text-align:center;padding:90px 20px 105px;background:#dce3d1;margin:0 calc((88vw - 100vw)/2);padding-left:max(6vw,20px);padding-right:max(6vw,20px)}
+.play-replay h2{font-size:clamp(48px,7vw,82px)}
+.play-replay h2 em{color:#c27d5f}
+.play-replay>p{margin:auto}
+.play-replay .demo-action{margin-top:28px;background:#394536;color:#f3f0e7;border-color:#394536}
+.replay-note{max-width:520px;margin:26px auto 0!important;font:italic 20px "Playfair Display",Georgia,serif;min-height:34px}
+.replay-note.pop{animation:demo-enter .35s ease both}
+.chapter-site .demo-action,.playdate-site .demo-action{font-family:"DM Sans",sans-serif}
+@media(max-width:760px){
+ .demo-nav{height:auto;min-height:68px;padding:16px 22px;flex-wrap:wrap}
+ .demo-nav nav{order:3;width:100%;justify-content:center;padding:8px 0 2px;gap:22px}
+ .demo-back-link{font-size:8px}
+ .demo-main{width:88vw}
+ .chapter-hero{min-height:auto;padding:75px 0;grid-template-columns:1fr;gap:55px}
+ .chapter-cover{width:min(300px,78%);justify-self:center}
+ .chapter-entry{grid-template-columns:1fr auto;gap:12px}
+ .chapter-entry>div{grid-column:1/-1;grid-row:2}
+ .chapter-entry>b{grid-column:2;grid-row:1}
+ .chapter-photo-grid,.play-photo-grid{grid-template-columns:1fr 1fr}
+ .chapter-photo-grid figure:first-child,.play-photo-grid figure:first-child{grid-column:1/-1}
+ .chapter-photo-grid figure:nth-child(2),.play-photo-grid figure:nth-child(2),.play-photo-grid figure:nth-child(3){margin-top:0}
+ .chapter-photo-grid img,.play-photo-grid img,.play-photo-grid .photo-tall img{height:230px}
+ .play-hero{min-height:auto;padding:70px 0 90px;grid-template-columns:1fr;gap:55px}
+ .play-hero-photo{width:88%;justify-self:center}
+ .play-hero-photo img{height:330px}
+ .sticker-one{top:44%;right:4%;width:78px;height:78px}
+ .sticker-two{right:0;bottom:55px;width:82px;height:82px}
+ .play-moments{grid-template-columns:1fr;padding-bottom:75px}
+ .play-moments article:nth-child(2){transform:none}
+ .demo-footer{flex-wrap:wrap;font-size:8px}
+}
+@media(max-width:460px){
+ .demo-nav nav a{font-size:8px}
+ .demo-brand{font-size:14px}
+ .demo-back-link{max-width:105px;text-align:right}
+ .chapter-hero h1,.play-hero h1{font-size:clamp(68px,18vw,92px)}
+ .chapter-photo-grid,.play-photo-grid{gap:10px}
+ .chapter-photo-grid img,.play-photo-grid img,.play-photo-grid .photo-tall img{height:185px}
+ .chapter-note,.play-replay{padding-top:75px;padding-bottom:75px}
+ .chapter-entry h3{font-size:26px}
+}
+@media(prefers-reduced-motion:reduce){.demo-site *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
