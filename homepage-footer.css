@@ -1959,3 +1959,18 @@ footer small {
     left: 0 !important;
   }
 }
+
+
+/* Correct card wrapper sizing, then lower the sticker 24px onto its corner */
+@media (min-width: 1024px) {
+  .hero-art .memory-card-wrap {
+    align-self: center !important;
+    height: fit-content !important;
+    min-height: 0 !important;
+    display: block !important;
+  }
+  .hero-art .memory-card-wrap > .sticker {
+    top: 14px !important;
+    left: -18px !important;
+  }
+}
