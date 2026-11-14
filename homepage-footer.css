@@ -1674,3 +1674,45 @@ footer small {
     letter-spacing: -3.5px !important;
   }
 }
+
+
+/* Hero headline — editorial scale matched to the order-section headline */
+@media (min-width: 1024px) {
+  .hero.wrap {
+    width: min(1452px, calc(100% - 12vw)) !important;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr) !important;
+    gap: clamp(36px, 4vw, 72px) !important;
+  }
+  .hero-copy {
+    padding: 0 !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+  }
+  .hero-copy h1 {
+    max-width: 100% !important;
+    font-size: clamp(68px, 5.25vw, 86px) !important;
+    line-height: .99 !important;
+    letter-spacing: -4px !important;
+    text-wrap: balance;
+  }
+  .hero-copy .eyebrow {
+    margin-bottom: 22px !important;
+    font-size: 9px !important;
+  }
+  .hero-copy .lead {
+    max-width: 500px !important;
+    margin: 24px 0 22px !important;
+    font-size: 13px !important;
+    line-height: 1.9 !important;
+  }
+  .hero-copy .note {
+    margin-top: 25px !important;
+    font-size: 13px !important;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1350px) {
+  .hero-copy h1 {
+    font-size: clamp(60px, 5vw, 70px) !important;
+    letter-spacing: -3px !important;
+  }
+}
