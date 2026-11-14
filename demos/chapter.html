@@ -34,10 +34,10 @@
     <h2>Not every page<br>needs to be <em>perfect.</em></h2>
     <p>Some are messy, some are beautiful. The best ones are the pages we get to write side by side.</p>
   </section>
-  <section class="chapter-list">
-    <article class="chapter-entry"><span>01 / THE BEGINNING</span><div><h3>The first hello.</h3><p>Awalnya sederhana. Satu percakapan kecil yang ternyata membuka begitu banyak cerita.</p></div><b>2021</b></article>
-    <article class="chapter-entry"><span>02 / THE LITTLE THINGS</span><div><h3>Our ordinary days.</h3><p>Obrolan tanpa akhir, tawa yang datang tiba-tiba, dan hal-hal kecil yang akhirnya jadi favorit.</p></div><b>2022</b></article>
-    <article class="chapter-entry"><span>03 / STILL BECOMING</span><div><h3>More pages to write.</h3><p>Kita masih belajar, tumbuh, dan memilih untuk saling menemani di halaman berikutnya.</p></div><b>NOW</b></article>
+  <div class="chapter-progress"><span>THE BOOK OF US</span><span id="chapterProgressLabel">PAGE 01 / 03</span><div><i id="chapterProgressBar"></i></div></div><section class="chapter-list">
+    <article class="chapter-entry"><span>01 / THE BEGINNING</span><div><h3>The first hello.</h3><p>Awalnya sederhana. Satu percakapan kecil yang ternyata membuka begitu banyak cerita.</p><button class="chapter-read" type="button" aria-expanded="false">READ THIS PAGE ↗</button><p class="chapter-extra" hidden>Hari itu mungkin terlihat biasa bagi orang lain. Tapi buat kita, itulah awal dari semua hal kecil yang sekarang terasa begitu berarti.</p></div><b>2021</b></article>
+    <article class="chapter-entry"><span>02 / THE LITTLE THINGS</span><div><h3>Our ordinary days.</h3><p>Obrolan tanpa akhir, tawa yang datang tiba-tiba, dan hal-hal kecil yang akhirnya jadi favorit.</p><button class="chapter-read" type="button" aria-expanded="false">READ THIS PAGE ↗</button><p class="chapter-extra" hidden>Tak perlu selalu pergi jauh. Kadang, cerita terbaik justru tumbuh dari rutinitas, pesan singkat, dan tawa yang hanya kita mengerti.</p></div><b>2022</b></article>
+    <article class="chapter-entry"><span>03 / STILL BECOMING</span><div><h3>More pages to write.</h3><p>Kita masih belajar, tumbuh, dan memilih untuk saling menemani di halaman berikutnya.</p><button class="chapter-read" type="button" aria-expanded="false">READ THIS PAGE ↗</button><p class="chapter-extra" hidden>Halaman berikutnya belum ditulis. Dan justru itu yang membuat kita punya banyak alasan untuk menantikannya.</p></div><b>NOW</b></article>
   </section>
   <section class="chapter-gallery" id="gallery">
     <div><small>BETWEEN THE LINES</small><h2>Little scenes<br><em>we keep.</em></h2></div>
@@ -73,4 +73,5 @@ document.getElementById("turnPage").addEventListener("click",function(){
 });
 </script>
 <script src="demo-personalize.js?v=1"></script>
+<script src="chapter-experience.js?v=1"></script>
 </body></html>
