@@ -1,1 +1,31 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chapter — Sela Cerita</title><link rel="stylesheet" href="demo.css"></head><body class="chapter"><a href="../index.html#koleksi">← Kembali ke koleksi</a><main><small>VOLUME 01 · OUR STORY</small><h1>CHAPTER<br><em>of us.</em></h1><p>Setiap cerita punya awal. Ini halaman pertama dari banyak hal yang masih ingin kita tulis bersama.</p><span>TURN THE PAGE →</span></main></body></html>
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#d8cbdc">
+<title>Chapter — Sela Cerita</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body class="chapter">
+<a class="demo-back" href="../index.html#koleksi">← Kembali ke koleksi</a>
+<main class="demo-page">
+  <small>VOLUME 01 · OUR STORY</small>
+  <h1>CHAPTER<br><em>of us.</em></h1>
+  <p>Setiap cerita punya awal. Ini halaman pertama dari banyak hal yang masih ingin kita tulis bersama.</p>
+  <button class="demo-action" id="turnPage" type="button">TURN THE PAGE <span>↗</span></button>
+  <section class="demo-reveal" id="chapterNext" hidden>
+    <small>CHAPTER 02 · STILL BECOMING</small>
+    <h2>And the story<br><em>goes on.</em></h2>
+    <p>Karena bagian terbaik dari sebuah cerita adalah hal-hal indah yang belum terjadi.</p>
+  </section>
+</main>
+<script>
+document.getElementById("turnPage").addEventListener("click",function(){
+  const next=document.getElementById("chapterNext");
+  next.hidden=!next.hidden;
+  this.innerHTML=next.hidden?'TURN THE PAGE <span>↗</span>':'CLOSE THIS PAGE <span>↙</span>';
+  if(!next.hidden) next.scrollIntoView({behavior:"smooth",block:"center"});
+});
+</script>
+</body>
+</html>
