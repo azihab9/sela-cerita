@@ -1725,3 +1725,14 @@ footer small {
     padding-right: clamp(28px, 4.5vw, 88px) !important;
   }
 }
+
+
+/* Keep the floating note clear of the memory card's heading */
+@media (min-width: 1024px) {
+  .hero-art > .sticker {
+    top: 2% !important;
+    left: 1% !important;
+    right: auto !important;
+    z-index: 7 !important;
+  }
+}
