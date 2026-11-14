@@ -1758,3 +1758,122 @@ footer small {
     z-index: 7 !important;
   }
 }
+
+
+/* Collection — refined product cards with a stronger editorial rhythm */
+.collection .section-head {
+  gap: clamp(28px, 5vw, 76px) !important;
+}
+.collection .section-head h2 {
+  font-size: clamp(54px, 6vw, 78px) !important;
+  line-height: .98 !important;
+}
+.collection .section-head .lead {
+  max-width: 360px !important;
+  padding-bottom: 8px;
+  font-size: 12px !important;
+  line-height: 1.9 !important;
+}
+.collection .cards {
+  gap: clamp(16px, 2vw, 28px) !important;
+}
+.collection .template {
+  min-height: 530px !important;
+  padding: clamp(22px, 2.2vw, 32px) !important;
+  border: 1px solid rgba(83,62,54,.08);
+  box-shadow: 0 18px 48px rgba(66,48,42,.07) !important;
+}
+.collection .template:before {
+  inset: 13px !important;
+  border: 1px solid rgba(255,250,246,.52);
+  background: linear-gradient(160deg,rgba(255,255,255,.12),transparent 52%);
+  pointer-events: none;
+}
+.collection .template > small {
+  position: relative;
+  z-index: 1;
+  font-size: 8px !important;
+  letter-spacing: 1.7px !important;
+  padding: 9px 12px !important;
+  background: rgba(255,250,246,.34) !important;
+}
+.collection .template > div {
+  position: relative;
+  z-index: 1;
+  min-height: 245px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: auto 0 14px !important;
+  padding: 28px 24px !important;
+  border: 1px solid rgba(255,250,246,.48);
+  background: rgba(255,250,246,.22);
+  backdrop-filter: blur(3px);
+}
+.collection .template > div > p {
+  margin: 0 0 16px !important;
+  font-size: 8px !important;
+  letter-spacing: 1.8px !important;
+}
+.collection .template h3 {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(36px, 3.4vw, 48px) !important;
+  line-height: .98 !important;
+  letter-spacing: -1.8px;
+}
+.collection .template > b {
+  position: relative;
+  z-index: 1;
+  margin-top: 0 !important;
+  font-size: 8px !important;
+}
+.collection .template h4 {
+  position: relative;
+  z-index: 1;
+  margin-top: 20px !important;
+  font-size: 29px !important;
+  letter-spacing: -.8px;
+}
+.collection .template > p:last-child {
+  position: relative;
+  z-index: 1;
+  margin-top: 3px !important;
+  font-size: 11px !important;
+}
+.collection .bloom > div {
+  color: #694b46;
+  background: rgba(255,246,239,.34);
+}
+.collection .chapter > div {
+  color: #55495b;
+  background: rgba(255,250,255,.3);
+}
+.collection .playdate > div {
+  color: #45533f;
+  background: rgba(250,255,244,.28);
+}
+@media (hover:hover) {
+  .collection .template:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 30px 66px rgba(66,48,42,.14) !important;
+  }
+  .collection .template:hover > div {
+    background: rgba(255,250,246,.42);
+    transform: translateY(-3px);
+  }
+}
+@media (max-width: 900px) {
+  .collection .template { min-height: 490px !important; }
+  .collection .template > div { min-height: 220px; }
+}
+@media (max-width: 620px) {
+  .collection .section-head { gap: 18px !important; }
+  .collection .section-head h2 { font-size: clamp(46px, 11vw, 60px) !important; }
+  .collection .template { min-height: 470px !important; }
+  .collection .template > div { min-height: 210px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .collection .template > div { transition: none !important; }
+}
