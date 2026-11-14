@@ -1736,3 +1736,14 @@ footer small {
     z-index: 7 !important;
   }
 }
+
+
+/* Float the memory sticker above the card, outside its text area */
+@media (min-width: 1024px) {
+  .hero-art > .sticker {
+    top: -5% !important;
+    left: 5% !important;
+    right: auto !important;
+    z-index: 7 !important;
+  }
+}
