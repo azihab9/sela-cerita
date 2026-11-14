@@ -1,1 +1,33 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Playdate — Sela Cerita</title><link rel="stylesheet" href="demo.css"></head><body class="playdate"><a href="../index.html#koleksi">← Kembali ke koleksi</a><main><small>OUR FAVORITE KIND OF CHAOS</small><h1>GOOD<br><em>TIMES</em><br>ONLY!</h1><p>Foto blur, tawa terlalu keras, dan rencana spontan. Hal-hal kecil yang justru bikin hari terasa besar.</p><span>LET'S REPLAY THIS DAY ✳</span></main></body></html>
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#b8c2aa">
+<title>Playdate — Sela Cerita</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body class="playdate">
+<a class="demo-back" href="../index.html#koleksi">← Kembali ke koleksi</a>
+<main class="demo-page">
+  <small>OUR FAVORITE KIND OF CHAOS</small>
+  <h1>GOOD<br><em>TIMES</em><br>ONLY!</h1>
+  <p>Foto blur, tawa terlalu keras, dan rencana spontan. Hal-hal kecil yang justru bikin hari terasa besar.</p>
+  <button class="demo-action" id="replay" type="button">LET'S REPLAY THIS DAY <span>✳</span></button>
+  <p class="replay-note" id="replayNote" aria-live="polite">Tap untuk membuka satu kenangan kecil.</p>
+</main>
+<script>
+const moments=[
+  "Ketawa sampai lupa mau cerita apa.",
+  "Satu foto blur yang tetap jadi favorit.",
+  "Rencana dadakan yang ternyata paling seru.",
+  "Hari biasa yang diam-diam jadi istimewa."
+];
+let momentIndex=-1;
+document.getElementById("replay").addEventListener("click",function(){
+  momentIndex=(momentIndex+1)%moments.length;
+  document.getElementById("replayNote").textContent=moments[momentIndex];
+  this.querySelector("span").textContent="♡";
+});
+</script>
+</body>
+</html>
