@@ -1,1 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:24px;display:grid;place-items:center;font-family:"DM Sans",sans-serif;color:#292526}body>a{position:absolute;top:25px;left:25px;font-size:11px}main{width:min(700px,100%);min-height:560px;padding:clamp(30px,7vw,75px);display:flex;flex-direction:column;justify-content:center;text-align:center}small{font-size:9px;letter-spacing:2px}h1{font:500 clamp(50px,9vw,85px)/1 var(--serif,"Playfair Display",serif);margin:28px 0}p{max-width:430px;margin:0 auto;font-size:12px;line-height:1.9}main span{margin-top:35px;font-size:13px}.bloom{background:#e9c8b8;color:#694f4d}.chapter{background:#d8cbdc;color:#443d48}.chapter h1{font-weight:700;letter-spacing:-4px}.chapter h1 em{font-weight:500}.playdate{background:#b8c2aa;color:#3b4436}.playdate h1{font:700 clamp(65px,13vw,110px)/.82 "DM Sans",sans-serif;letter-spacing:-8px}.playdate h1 em{font:italic 500 .9em "Playfair Display",serif;color:#f5e0c9}
+/* Demo interactions shared by Chapter and Playdate */
+.demo-back{position:absolute;top:25px;left:25px;font-size:11px;letter-spacing:.04em;opacity:.72}
+.demo-page{position:relative}
+.demo-action{align-self:center;margin-top:34px;padding:13px 19px;border:1px solid currentColor;border-radius:999px;background:transparent;color:inherit;font-size:10px;font-weight:700;letter-spacing:1.4px;transition:transform .25s ease,background .25s ease}
+.demo-action:hover{transform:translateY(-3px);background:rgba(255,255,255,.2)}
+.demo-action span{margin-left:8px}
+.demo-reveal{margin:44px auto 0;padding:28px 20px 0;border-top:1px solid currentColor;max-width:440px;animation:demo-enter .55s ease both}
+.demo-reveal h2{font:500 clamp(34px,6vw,52px)/1.05 "Playfair Display",Georgia,serif;margin:18px 0}
+.demo-reveal h2 em{color:#8d7298}
+.demo-reveal p{font-size:12px;line-height:1.9}
+.replay-note{min-height:24px;margin:22px auto 0!important;font-family:"Playfair Display",Georgia,serif;font-style:italic;font-size:16px!important;transition:opacity .2s ease}
+[hidden]{display:none!important}
+@keyframes demo-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.demo-back{top:18px;left:18px}.demo-page{min-height:calc(100vh - 48px)}}
+@media(prefers-reduced-motion:reduce){.demo-action,.demo-reveal{transition:none;animation:none}}
