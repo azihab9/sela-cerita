@@ -152,3 +152,16 @@ body.chapter,body.playdate{display:block!important;place-items:initial!important
 .personalize-actions button{border:1px solid #d9c9bf;background:transparent;border-radius:999px;padding:10px 13px;font:600 9px "DM Sans",sans-serif;cursor:pointer}
 .personalize-actions span{font-size:8px;letter-spacing:1.4px;color:#a18b80}
 @media(max-width:600px){.personalize-launch{right:14px;bottom:14px;padding:13px 16px}.personalize-panel{right:12px;bottom:72px}}
+
+/* Chapter's book-like reading interaction */
+.chapter-progress{display:flex;align-items:center;gap:18px;margin:0 10px 22px;font-size:8px;letter-spacing:1.6px}
+.chapter-progress span:first-child{opacity:.65}.chapter-progress span:nth-child(2){margin-left:auto}
+.chapter-progress>div{width:100px;height:2px;background:#d9cbdc}.chapter-progress i{display:block;width:0;height:100%;background:#94799d;transition:width .35s ease}
+.chapter-read{margin-top:14px;border:0;border-bottom:1px solid #94799d;background:transparent;color:#765d80;padding:0 0 5px;font-size:8px;letter-spacing:1.5px;cursor:pointer}
+.chapter-extra{margin-top:14px!important;padding:15px 18px;border-left:2px solid #94799d;background:#e9e0eb;font:italic 14px/1.8 "Playfair Display",Georgia,serif;animation:demo-enter .35s ease both}
+.play-challenge{width:min(480px,100%);margin:42px auto 0;padding:25px 26px;background:#d0d9c3;border:1px solid #9eaa90;transform:rotate(-1deg)}
+.play-challenge small{font-size:8px;letter-spacing:2px}
+.play-challenge p{margin:18px auto!important;font:italic 23px/1.35 "Playfair Display",Georgia,serif;min-height:62px}
+.challenge-button{border:1px solid #4c5a45;border-radius:999px;padding:12px 17px;background:transparent;color:#3b4436;font-size:8px;font-weight:700;letter-spacing:1.3px;cursor:pointer}
+.challenge-pop{animation:demo-enter .35s ease both}
+@media(max-width:760px){.chapter-progress{margin-inline:0}.play-challenge{padding:20px}}
