@@ -2076,3 +2076,15 @@ footer small {
     margin-top: 28px !important;
   }
 }
+
+
+/* Softer collection hover — keep the catalog visually aligned */
+@media (hover:hover) and (min-width: 901px) {
+  .collection .template:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 22px 48px rgba(66,48,42,.12) !important;
+  }
+  .collection .template:hover > div {
+    transform: none !important;
+  }
+}
