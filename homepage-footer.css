@@ -1716,3 +1716,12 @@ footer small {
     letter-spacing: -3px !important;
   }
 }
+
+
+/* Header — move brand and navigation closer to the screen corners */
+@media (min-width: 761px) {
+  .site-header {
+    padding-left: clamp(28px, 4.5vw, 88px) !important;
+    padding-right: clamp(28px, 4.5vw, 88px) !important;
+  }
+}
