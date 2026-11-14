@@ -1888,3 +1888,17 @@ footer small {
     z-index: 7 !important;
   }
 }
+
+
+/* Final vertical correction: keep the note comfortably within the hero artwork */
+@media (min-width: 1024px) {
+  .hero-art {
+    position: relative !important;
+  }
+  .hero-art > .sticker {
+    top: 26% !important;
+    left: 2% !important;
+    right: auto !important;
+    z-index: 7 !important;
+  }
+}
