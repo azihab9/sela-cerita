@@ -1877,3 +1877,14 @@ footer small {
 @media (prefers-reduced-motion: reduce) {
   .collection .template > div { transition: none !important; }
 }
+
+
+/* Keep the floating note inside the hero artwork, beside the card */
+@media (min-width: 1024px) {
+  .hero-art > .sticker {
+    top: 14% !important;
+    left: 0% !important;
+    right: auto !important;
+    z-index: 7 !important;
+  }
+}
