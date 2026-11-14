@@ -19,13 +19,13 @@
     <div class="chapter-hero-copy">
       <small>VOLUME 01 · OUR STORY</small>
       <h1>CHAPTER<br><em>of us.</em></h1>
-      <p>Setiap cerita punya awal. Ini halaman pertama dari banyak hal yang masih ingin kita tulis bersama.</p>
+      <p><span data-personalize="message">Setiap cerita punya awal. Ini halaman pertama dari banyak hal yang masih ingin kita tulis bersama.</span></p>
       <a class="demo-text-link" href="#chapters">TURN THE PAGE ↓</a>
     </div>
     <div class="chapter-cover" aria-label="Book cover illustration">
       <span class="cover-index">A COLLECTION OF LITTLE MOMENTS</span>
-      <strong>Our<br><em>favorite</em><br>chapter.</strong>
-      <span class="cover-date">EST. 14 FEBRUARY 2021</span>
+      <strong>Our<br><em>favorite</em><br>chapter.</strong><span class="personalize-name" data-personalize="names">YOUR NAMES</span>
+      <span class="cover-date" data-personalize="date">YOUR SPECIAL DATE</span>
       <i>01</i>
     </div>
   </section>
@@ -55,6 +55,14 @@
     <p class="chapter-hidden-note" id="chapterNext" hidden>For all the chapters we haven't lived yet — I'm glad it's you. ♡</p>
   </section>
 </main>
+<aside class="personalize-panel" id="personalizePanel" aria-label="Personalize this demo" hidden>
+  <div class="personalize-panel-head"><div><small>MAKE IT YOURS</small><h2>Personalize your story</h2></div><button type="button" class="personalize-close" id="closePersonalize" aria-label="Close">×</button></div>
+  <label>Your names<input id="customNames" type="text" maxlength="36" placeholder="e.g. Alex & Jamie"></label>
+  <label>Special date<input id="customDate" type="text" maxlength="32" placeholder="e.g. 14 February 2026"></label>
+  <label>A little message<textarea id="customMessage" rows="3" maxlength="150" placeholder="Write a line that feels like you..."></textarea></label>
+  <div class="personalize-actions"><button type="button" id="resetPersonalize">Reset preview</button><span>PREVIEW ONLY</span></div>
+</aside>
+<button type="button" class="personalize-launch" id="openPersonalize">✳ PERSONALIZE THIS DEMO</button>
 <footer class="demo-footer"><a href="../index.html#koleksi">← BACK TO SELA CERITA</a><span>MADE OF MEMORIES · CHAPTER</span></footer>
 </div>
 <script>
@@ -64,4 +72,5 @@ document.getElementById("turnPage").addEventListener("click",function(){
  if(!note.hidden)note.scrollIntoView({behavior:"smooth",block:"center"});
 });
 </script>
+<script src="demo-personalize.js?v=1"></script>
 </body></html>
