@@ -16,6 +16,32 @@
   if(!urls.length)return "";
   return '<div class="gallery '+style+'">'+urls.map((url,index)=>'<button type="button" class="gallery-item" data-photo="'+index+'" aria-label="Lihat foto '+(index+1)+'"><img src="'+esc(url)+'" alt="Foto kenangan '+(index+1)+'"></button>').join("")+'</div>';
  }
+ function commonSections(data){
+  const date=data.eventDate?new Date(data.eventDate+"T00:00:00"):null;
+  const dateLabel=date?dateText(data.eventDate):"Tanggal menyusul";
+  const mapsQuery=[data.venueName,data.venueAddress].filter(Boolean).join(" ");
+  const mapsUrl=mapsQuery?"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(mapsQuery):"";
+  const hasVenue=Boolean(data.venueName||data.venueAddress);
+  const hasRsvp=Boolean(data.rsvpPhone);
+  return '<section class="event-details"><div class="event-heading"><p class="eyebrow">SAVE THE DATE</p><h2>The day <em>we celebrate.</em></h2></div>'+
+   (date?'<div class="countdown-card" data-countdown="'+esc(data.eventDate)+'"><span class="countdown-label">COUNTING DOWN TO OUR DAY</span><div class="countdown-grid"><div><b data-days>—</b><small>HARI</small></div><div><b data-hours>—</b><small>JAM</small></div><div><b data-minutes>—</b><small>MENIT</small></div><div><b data-seconds>—</b><small>DETIK</small></div></div><p>'+esc(dateLabel)+'</p></div>':'')+
+   '<div class="event-info"><div class="event-info-item"><span class="event-icon">◷</span><div><small>TANGGAL & WAKTU</small><b>'+esc(dateLabel)+'</b><p>'+esc(data.eventTime||"Waktu acara akan diumumkan")+'</p></div></div>'+
+   (hasVenue?'<div class="event-info-item"><span class="event-icon">⌖</span><div><small>LOKASI ACARA</small><b>'+esc(data.venueName||"Lokasi acara")+'</b><p>'+esc(data.venueAddress||"")+'</p>'+(mapsUrl?'<a class="map-link" target="_blank" rel="noopener noreferrer" href="'+esc(mapsUrl)+'">Buka petunjuk arah ↗</a>':'')+'</div></div>':'')+
+   '</div>'+
+   (hasRsvp?'<div class="rsvp-card"><p class="eyebrow">KINDLY REPLY</p><h2>Will you <em>join us?</em></h2><p>Konfirmasikan kehadiran kalian melalui WhatsApp.</p><a class="rsvp-button" target="_blank" rel="noopener noreferrer" href="https://wa.me/'+esc(data.rsvpPhone)+'?text='+encodeURIComponent(data.rsvpMessage)+'">Konfirmasi via WhatsApp ↗</a></div>':'')+
+   '<div class="closing-card"><span>♡</span><p>'+esc(data.closing)+'</p><b>'+esc(data.first)+' & '+esc(data.second)+'</b></div></section>';
+ }
+ function startCountdown(){
+  const card=document.querySelector("[data-countdown]");if(!card)return;
+  const target=new Date(card.dataset.countdown+"T00:00:00").getTime();
+  const update=()=>{
+   const remaining=target-Date.now(),value=Math.max(0,remaining);
+   const units={days:Math.floor(value/86400000),hours:Math.floor(value%86400000/3600000),minutes:Math.floor(value%3600000/60000),seconds:Math.floor(value%60000/1000)};
+   Object.entries(units).forEach(([key,number])=>{const node=card.querySelector("[data-"+key+"]");if(node)node.textContent=String(number).padStart(2,"0");});
+   if(remaining<=0)card.querySelector(".countdown-label").textContent="TODAY IS THE DAY";
+  };
+  update();setInterval(update,1000);
+ }
  function bloomMarkup(data,urls,accent){
   return '<article class="invitation bloom" style="--accent:'+accent+'">'+
    '<section class="bloom-cover"><div class="bloom-flower">✿</div><p class="eyebrow">A LITTLE NOTE FOR YOU</p><span class="cover-overline">OUR STORY · OUR LITTLE UNIVERSE</span><h1>'+esc(data.title)+'</h1><p class="couple">'+esc(data.first)+' <i>&</i> '+esc(data.second)+'</p><span class="ornament-line"></span><p class="cover-message">'+esc(data.story||"Setiap cerita indah dimulai dari hal sederhana...")+'</p><p class="cover-date">'+esc(data.date)+'</p><span class="scroll-hint">SCROLL TO EXPLORE ↓</span></section>'+
@@ -44,7 +70,14 @@
    first:names.first||"Nama pertama",
    second:names.second||"Nama kedua",
    story:content.story||"",
-   date:dateText(content.eventDate)
+   date:dateText(content.eventDate),
+   eventDate:content.eventDate||"",
+   eventTime:content.eventTime||"",
+   venueName:content.venueName||"",
+   venueAddress:content.venueAddress||"",
+   rsvpPhone:String(content.rsvp?.phone||"").replace(/[^0-9]/g,""),
+   rsvpMessage:content.rsvp?.message||"Halo, saya ingin mengonfirmasi kehadiran.",
+   closing:content.closingMessage||"Terima kasih telah menjadi bagian dari cerita kami."
   };
   const accent=palettes[content.appearance?.accent]||palettes.peach;
   const urls=[];
@@ -54,7 +87,8 @@
    if(photo?.signedUrl)urls.push(photo.signedUrl);
   }
   const render=template==="chapter"?chapterMarkup:template==="playdate"?playdateMarkup:bloomMarkup;
-  root.innerHTML=render(data,urls,accent)+
+  const common=commonSections(data);
+  root.innerHTML=render(data,urls,accent)+common+
    '<p class="footer">SELA CERITA STUDIO <span>·</span> EVERY MOMENT HAS A STORY</p>'+
    '<div class="lightbox" id="lightbox" aria-hidden="true"><button type="button" aria-label="Tutup">×</button><img alt="Foto kenangan"></div>';
   root.querySelectorAll("[data-photo]").forEach(button=>button.addEventListener("click",()=>{
@@ -66,6 +100,7 @@
   box.querySelector("button").addEventListener("click",close);
   box.addEventListener("click",event=>{if(event.target===box)close();});
   document.addEventListener("keydown",event=>{if(event.key==="Escape")close();});
+  startCountdown();
   document.title=(project.title||"Cerita istimewa")+" — Sela Cerita";
  }
  const previewTimeout=setTimeout(()=>fail("Pemuatan terlalu lama. Periksa koneksi lalu coba muat ulang. Jika masih gagal, kirim pesan error dari halaman ini."),15000);
