@@ -77,14 +77,15 @@ if (form) form.addEventListener("submit", event => {
   const data = new FormData(form);
   const photoNames = selectedPhotos.map(file => file.name);
   const message = [
-    "Halo Sela Cerita! Aku ingin memesan website personal.",
+    "Halo Sela Cerita! Aku ingin membuat undangan pernikahan digital.",
     "",
     "Nama: " + data.get("name"),
     "Kontak WhatsApp: " + data.get("contact"),
-    "Momen: " + data.get("occasion"),
+    "Momen: Pernikahan",
     "Template: " + data.get("template"),
     "Nama pasangan: " + (data.get("partner") || "-"),
-    "Tanggal spesial: " + (data.get("event_date") || "-"),
+    "Tanggal pernikahan: " + (data.get("event_date") || "-"),
+    "Perkiraan tamu: " + (data.get("guest_count") || "-"),
     "Cerita / detail: " + (data.get("details") || "-"),
     "Foto pilihan: " + (photoNames.length ? photoNames.join(", ") : "Belum ada"),
     "",
