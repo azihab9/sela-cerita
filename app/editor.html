@@ -52,7 +52,17 @@
           <label for="event-date">Tanggal spesial <span>Pilih hari yang ingin kalian rayakan</span></label>
           <input id="event-date" type="date">
         </div>
-        <div class="editor-tip"><span>♡</span><p><b>Keep it meaningful</b> Nama dan tanggal akan menjadi detail utama yang mudah ditemukan oleh orang-orang tersayang.</p></div>
+        <div class="field-card">
+          <label for="event-time">Waktu acara <span>Contoh: 10.00 WIB — selesai</span></label>
+          <input id="event-time" maxlength="60" placeholder="10.00 WIB — selesai">
+        </div>
+        <div class="field-card">
+          <label for="venue-name">Nama lokasi <span>Tempat berlangsungnya acara</span></label>
+          <input id="venue-name" maxlength="100" placeholder="Nama gedung, restoran, atau lokasi">
+          <label for="venue-address" style="margin-top:18px">Alamat lengkap <span>Alamat yang akan dibuka melalui Google Maps</span></label>
+          <textarea id="venue-address" rows="3" maxlength="300" placeholder="Jalan, nomor, kota, dan patokan lokasi"></textarea>
+        </div>
+        <div class="editor-tip"><span>♡</span><p><b>Keep it meaningful</b> Nama, tanggal, dan lokasi membantu tamu menemukan acara kalian.</p></div>
       </section>
       <section class="step-panel" data-panel="2">
         <div class="section-kicker"><span>WORDS FROM THE HEART</span><span>03 — YOUR STORY</span></div>
@@ -82,6 +92,16 @@
             <label class="palette-option"><input type="radio" name="accent-choice" value="rose"><span class="swatch rose"></span><b>Rose</b><small>Sweet & timeless</small></label>
           </div>
           <select id="accent" hidden aria-hidden="true"><option value="peach">Peach hangat</option><option value="lavender">Lavender</option><option value="rose">Rose</option></select>
+        </div>
+        <div class="field-card">
+          <label for="rsvp-phone">Nomor WhatsApp RSVP <span>Gunakan kode negara, contoh 62812xxxxxxx</span></label>
+          <input id="rsvp-phone" inputmode="numeric" maxlength="20" placeholder="6281234567890">
+          <label for="rsvp-message" style="margin-top:18px">Pesan RSVP <span>Pesan yang otomatis terisi saat tamu menghubungi kalian</span></label>
+          <textarea id="rsvp-message" rows="3" maxlength="240" placeholder="Halo, saya ingin mengonfirmasi kehadiran..."></textarea>
+        </div>
+        <div class="field-card">
+          <label for="closing-message">Pesan penutup <span>Kalimat terakhir untuk tamu undangan</span></label>
+          <textarea id="closing-message" rows="3" maxlength="400" placeholder="Terima kasih telah menjadi bagian dari cerita kami. Kehadiran dan doa kalian berarti bagi kami."></textarea>
         </div>
         <div class="field-card final-card"><span class="eyebrow">ALMOST THERE</span><h3>Satu cerita, dirangkai <em>oleh kalian.</em></h3><p>Semua perubahan tersimpan sebagai draft pribadi. Kamu bisa melihat preview website sebelum memutuskan untuk menerbitkannya.</p><div class="final-summary"><span>Template pilihan</span><b id="final-template">BLOOM</b></div></div>
       </section>
