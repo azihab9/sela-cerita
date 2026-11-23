@@ -154,9 +154,15 @@ with check (
 insert into public.templates (id, name, description)
 values
   ('bloom', 'Bloom', 'Soft, romantic, and full of warmth.'),
-  ('chapter', 'Chapter', 'Timeless, clean, and a little poetic.'),
+  ('chapter', 'Afterglow', 'Cinematic, intimate, and atmospheric.'),
   ('playdate', 'Playdate', 'Fun, colorful, and unapologetically you.')
 on conflict (id) do nothing;
 
 -- Storage bucket and object policies are intentionally created in a separate
 -- setup step after confirming the desired photo visibility and retention model.
+
+
+-- Preserve the stable template ID while updating its customer-facing name.
+update public.templates
+set name = 'Afterglow', description = 'Cinematic, intimate, and atmospheric.'
+where id = 'chapter';
