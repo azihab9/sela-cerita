@@ -16,6 +16,9 @@
   if(!urls.length)return "";
   return '<div class="gallery '+style+'">'+urls.map((url,index)=>'<button type="button" class="gallery-item" data-photo="'+index+'" aria-label="Lihat foto '+(index+1)+'"><img src="'+esc(url)+'" alt="Foto kenangan '+(index+1)+'"></button>').join("")+'</div>';
  }
+ function safeAudioUrl(value){
+  try{const url=new URL(value);return ["https:","http:"].includes(url.protocol)?url.href:"";}catch{return "";}
+ }
  function commonSections(data){
   const date=data.eventDate?new Date(data.eventDate+"T00:00:00"):null;
   const dateLabel=date?dateText(data.eventDate):"Tanggal menyusul";
@@ -29,7 +32,9 @@
    (hasVenue?'<div class="event-info-item"><span class="event-icon">⌖</span><div><small>LOKASI ACARA</small><b>'+esc(data.venueName||"Lokasi acara")+'</b><p>'+esc(data.venueAddress||"")+'</p>'+(mapsUrl?'<a class="map-link" target="_blank" rel="noopener noreferrer" href="'+esc(mapsUrl)+'">Buka petunjuk arah ↗</a>':'')+'</div></div>':'')+
    '</div>'+
    (hasRsvp?'<div class="rsvp-card"><p class="eyebrow">KINDLY REPLY</p><h2>Will you <em>join us?</em></h2><p>Konfirmasikan kehadiran kalian melalui WhatsApp.</p><a class="rsvp-button" target="_blank" rel="noopener noreferrer" href="https://wa.me/'+esc(data.rsvpPhone)+'?text='+encodeURIComponent(data.rsvpMessage)+'">Konfirmasi via WhatsApp ↗</a></div>':'')+
-   '<div class="closing-card"><span>♡</span><p>'+esc(data.closing)+'</p><b>'+esc(data.first)+' & '+esc(data.second)+'</b></div></section>';
+   '<div class="closing-card"><span>♡</span><p>'+esc(data.closing)+'</p><b>'+esc(data.first)+' & '+esc(data.second)+'</b></div>'+
+   (safeAudioUrl(data.musicUrl)?'<div class="music-card"><span class="eyebrow">A LITTLE SOUNDTRACK</span><p>Putar lagu yang menemani cerita kalian.</p><audio controls preload="none" src="'+esc(safeAudioUrl(data.musicUrl))+'">Browser kamu belum mendukung audio.</audio></div>':'')+
+   '</section>';
  }
  function startCountdown(){
   const card=document.querySelector("[data-countdown]");if(!card)return;
@@ -77,7 +82,8 @@
    venueAddress:content.venueAddress||"",
    rsvpPhone:String(content.rsvp?.phone||"").replace(/[^0-9]/g,""),
    rsvpMessage:content.rsvp?.message||"Halo, saya ingin mengonfirmasi kehadiran.",
-   closing:content.closingMessage||"Terima kasih telah menjadi bagian dari cerita kami."
+   closing:content.closingMessage||"Terima kasih telah menjadi bagian dari cerita kami.",
+   musicUrl:content.musicUrl||""
   };
   const accent=palettes[content.appearance?.accent]||palettes.peach;
   const urls=[];
