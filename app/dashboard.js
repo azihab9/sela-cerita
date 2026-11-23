@@ -47,15 +47,17 @@ async function loadTemplates(){
  grid.innerHTML=(data||[]).map(t=>{const meta=templateMeta[t.id]||templateMeta.bloom;return '<article class="template-option"><div class="project-art '+meta.className+'"><span>'+meta.kind+'</span><div>'+meta.headline+'</div><small>'+escapeHtml(t.name).toUpperCase()+' TEMPLATE</small></div><h3>'+escapeHtml(t.name)+'</h3><p>'+escapeHtml(t.description||"Personalize this template.")+'</p><button class="primary-button choose-template" data-template="'+escapeHtml(t.id)+'">Pilih '+escapeHtml(t.name)+' ↗</button></article>'}).join("");
  grid.querySelectorAll(".choose-template").forEach(button=>button.addEventListener("click",()=>createProject(button.dataset.template)));
 }
-async function createProject(templateId){
+async function createProject(templateId,options={}){
  const template=templateMeta[templateId];if(!template){notify("Template tidak ditemukan.");return;}
- const title=prompt("Beri nama untuk website barumu:",template.name+" — Cerita Baru");
+ const title=options.silent?template.name+" — Cerita Baru":prompt("Beri nama untuk website barumu:",template.name+" — Cerita Baru");
  if(title===null)return;
  const cleanTitle=title.trim()||"Cerita Baru";
  const {data,error}=await db.from("projects").insert({owner_id:currentUser.id,template_id:templateId,title:cleanTitle,content:{}}).select().single();
  if(error){notify("Project belum bisa dibuat: "+error.message);return;}
  notify("Project "+cleanTitle+" berhasil dibuat!");
- await loadProjects();showView("projects");
+ await loadProjects();
+ if(options.openEditor){location.href="editor.html?id="+encodeURIComponent(data.id);return;}
+ showView("projects");
 }
 async function loadProjects(){
  const {data,error}=await db.from("projects").select("id,title,template_id,status,created_at,updated_at").order("updated_at",{ascending:false});
@@ -71,8 +73,17 @@ async function init(){
  document.querySelector("#user-email").textContent=session.user.email||"";
  document.querySelector("#user-avatar").textContent=displayName.slice(0,2).toUpperCase();
  document.querySelector("#logout-button").addEventListener("click",async()=>{const {error}=await db.auth.signOut();if(error){notify(error.message);return;}location.replace("auth.html");});
+ const requestedTemplate=new URLSearchParams(location.search).get("template");
+ const allowedTemplates=["bloom","chapter","playdate"];
+ // Remove the one-time selection from the address bar before creating the draft,
+ // so refreshing the dashboard cannot create duplicate projects.
+ if(requestedTemplate)history.replaceState(null,"",location.pathname+location.hash);
  await Promise.all([loadProjects(),loadTemplates()]);
- const initial=location.hash.replace("#","");if(initial)showView(initial);
+ if(requestedTemplate&&allowedTemplates.includes(requestedTemplate)){
+   await createProject(requestedTemplate,{silent:true,openEditor:true});
+ }else{
+   const initial=location.hash.replace("#","");if(initial)showView(initial);
+ }
  db.auth.onAuthStateChange((event)=>{if(event==="SIGNED_OUT")location.replace("auth.html");});
 }
 init();
