@@ -25,7 +25,7 @@ let currentUser=null;
 function projectCard(project){
  const meta=templateMeta[project.template_id]||templateMeta.bloom;
  const published=project.status==="published";
- return '<article class="project-card"><div class="project-art '+meta.className+'"><span>'+meta.kind+'</span><div>'+meta.headline+'</div><small>'+meta.name.toUpperCase()+' TEMPLATE</small></div><div class="project-info"><div><h3>'+escapeHtml(project.title)+'</h3><p>'+meta.name+' · '+(published?"Website terbit":"Project pribadi")+'</p></div><span class="status '+(published?"published":"draft")+'">'+(published?"Terbit":"Draft")+'</span></div><button class="card-action" data-project-id="'+escapeHtml(project.id)+'">Buka project ↗</button></article>';
+ return '<article class="project-card"><div class="project-art '+meta.className+'"><span>'+meta.kind+'</span><div>'+meta.headline+'</div><small>'+meta.name.toUpperCase()+' TEMPLATE</small></div><div class="project-info"><div><h3>'+escapeHtml(project.title)+'</h3><p>'+meta.name+' · '+(published?"Website terbit":"Project pribadi")+'</p></div><span class="status '+(published?"published":"draft")+'">'+(published?"Terbit":"Draft")+'</span></div><button class="card-action" data-project-id="'+escapeHtml(project.id)+'">Buka project ↗︎</button></article>';
 }
 function renderProjects(projects){
  const recent=document.querySelector("#recent-projects"),all=document.querySelector("#all-projects");
@@ -44,7 +44,7 @@ async function loadTemplates(){
  const grid=document.querySelector("#template-grid");
  const {data,error}=await db.from("templates").select("id,name,description").eq("is_active",true).order("name");
  if(error){grid.innerHTML='<p class="loading-state">Template belum dapat dimuat: '+escapeHtml(error.message)+'</p>';return;}
- grid.innerHTML=(data||[]).map(t=>{const meta=templateMeta[t.id]||templateMeta.bloom;const displayName=meta.name||t.name;return '<article class="template-option"><div class="project-art '+meta.className+'"><span>'+meta.kind+'</span><div>'+meta.headline+'</div><small>'+escapeHtml(displayName).toUpperCase()+' TEMPLATE</small></div><h3>'+escapeHtml(displayName)+'</h3><p>'+escapeHtml(meta.description||t.description||"Personalize this template.")+'</p><button class="primary-button choose-template" data-template="'+escapeHtml(t.id)+'">Pilih '+escapeHtml(displayName)+' ↗</button></article>'}).join("");
+ grid.innerHTML=(data||[]).map(t=>{const meta=templateMeta[t.id]||templateMeta.bloom;const displayName=meta.name||t.name;return '<article class="template-option"><div class="project-art '+meta.className+'"><span>'+meta.kind+'</span><div>'+meta.headline+'</div><small>'+escapeHtml(displayName).toUpperCase()+' TEMPLATE</small></div><h3>'+escapeHtml(displayName)+'</h3><p>'+escapeHtml(meta.description||t.description||"Personalize this template.")+'</p><button class="primary-button choose-template" data-template="'+escapeHtml(t.id)+'">Pilih '+escapeHtml(displayName)+' ↗︎</button></article>'}).join("");
  grid.querySelectorAll(".choose-template").forEach(button=>button.addEventListener("click",()=>createProject(button.dataset.template)));
 }
 async function createProject(templateId,options={}){
