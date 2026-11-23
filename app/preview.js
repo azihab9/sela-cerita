@@ -28,7 +28,7 @@
  }
  function playdateMarkup(data,urls,accent){
   return '<article class="invitation playdate" style="--accent:'+accent+'">'+
-   '<section class="play-cover"><span class="sticker sticker-one">✳ GOOD VIBES</span><span class="sticker sticker-two">EST. '+esc(data.date.split(" ").pop()||"2026")+'</span><p class="eyebrow">OUR FAVORITE KIND OF CHAOS</p><h1>'+esc(data.title)+'</h1><div class="play-names">'+esc(data.first)+' <span>+</span> '+esc(data.second)+'</div><p class="play-message">'+esc(data.story||"Foto blur, tawa terlalu keras, dan rencana spontan. Hal-hal kecil yang justru bikin hari terasa besar.")+'</p><div class="play-date">'+esc(data.date)+'</div><span class="play-arrow">LET'S REPLAY THIS DAY ↓</span></section>'+
+   '<section class="play-cover"><span class="sticker sticker-one">✳ GOOD VIBES</span><span class="sticker sticker-two">EST. '+esc(data.date.split(" ").pop()||"2026")+'</span><p class="eyebrow">OUR FAVORITE KIND OF CHAOS</p><h1>'+esc(data.title)+'</h1><div class="play-names">'+esc(data.first)+' <span>+</span> '+esc(data.second)+'</div><p class="play-message">'+esc(data.story||"Foto blur, tawa terlalu keras, dan rencana spontan. Hal-hal kecil yang justru bikin hari terasa besar.")+'</p><div class="play-date">'+esc(data.date)+'</div><span class="play-arrow">LET’S REPLAY THIS DAY ↓</span></section>'+
    '<section class="play-memories"><div class="play-section-head"><span>THE GOOD STUFF</span><h2>Little moments,<br><em>big memories.</em></h2></div>'+galleryMarkup(urls,"play-gallery")+'<div class="play-footer">MADE OF LAUGHTER & LOVE <span>✳</span></div></section></article>';
  }
  async function init(){
