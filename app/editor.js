@@ -14,7 +14,7 @@
     {eyebrow:"STEP 04 / 05",title:"Pilih <em>kenangannya.</em>",description:"Tambahkan foto yang membuat cerita ini terasa semakin dekat."},
     {eyebrow:"STEP 05 / 05",title:"Sentuhan <em>terakhir.</em>",description:"Pilih warna yang paling mewakili suasana cerita kalian."}
   ];
-  const templateNames={bloom:"BLOOM",chapter:"CHAPTER",playdate:"PLAYDATE"};
+  const templateNames={bloom:"BLOOM",chapter:"AFTERGLOW",playdate:"PLAYDATE"};
   let project=null,sessionUser=null,saveTimer=null,photos=[],uploading=false,currentStep=0,saving=false;
   function setStatus(message,state){
     status.textContent=message;
