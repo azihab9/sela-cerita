@@ -132,8 +132,8 @@
       const item=document.createElement("div");item.className="photo-thumb";
       const image=document.createElement("img");image.src=photo.url||"";image.alt="Foto "+(index+1);image.addEventListener("click",()=>openLightbox(photo.url));
       const controls=document.createElement("div");controls.className="photo-controls";
-      const left=document.createElement("button");left.type="button";left.textContent="←";left.disabled=index===0;left.setAttribute("aria-label","Geser ke kiri");left.addEventListener("click",()=>movePhoto(index,-1));
-      const right=document.createElement("button");right.type="button";right.textContent="→";right.disabled=index===photos.length-1;right.setAttribute("aria-label","Geser ke kanan");right.addEventListener("click",()=>movePhoto(index,1));
+      const left=document.createElement("button");left.type="button";left.textContent="←︎";left.disabled=index===0;left.setAttribute("aria-label","Geser ke kiri");left.addEventListener("click",()=>movePhoto(index,-1));
+      const right=document.createElement("button");right.type="button";right.textContent="→︎";right.disabled=index===photos.length-1;right.setAttribute("aria-label","Geser ke kanan");right.addEventListener("click",()=>movePhoto(index,1));
       controls.append(left,right);
       const remove=document.createElement("button");remove.type="button";remove.className="remove-photo";remove.textContent="×";remove.setAttribute("aria-label","Hapus foto");remove.addEventListener("click",()=>removePhoto(index));
       item.append(image,controls,remove);photoGrid.append(item);
