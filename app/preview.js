@@ -94,7 +94,9 @@
   }
   const render=template==="chapter"?chapterMarkup:template==="playdate"?playdateMarkup:bloomMarkup;
   const common=commonSections(data);
-  root.innerHTML=render(data,urls,accent)+common+
+  const invitation=render(data,urls,accent);
+  // Keep shared event sections inside the selected template so each theme's CSS applies.
+  root.innerHTML=invitation.replace("</article>",common+"</article>")+
    '<p class="footer">SELA CERITA STUDIO <span>·</span> EVERY MOMENT HAS A STORY</p>'+
    '<div class="lightbox" id="lightbox" aria-hidden="true"><button type="button" aria-label="Tutup">×</button><img alt="Foto kenangan"></div>';
   root.querySelectorAll("[data-photo]").forEach(button=>button.addEventListener("click",()=>{
