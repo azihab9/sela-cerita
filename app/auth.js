@@ -38,7 +38,7 @@
       }else{
         const {data,error}=await client.auth.signInWithPassword({email,password:pass});
         if(error)throw error;
-        if(data.session){location.href="dashboard.html";return;}
+        if(data.session){location.href=dashboardUrl();return;}
       }
     }catch(error){message.textContent=error.message||"Terjadi kendala. Coba lagi.";}
     finally{button.disabled=false;}
