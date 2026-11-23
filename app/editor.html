@@ -1,17 +1,104 @@
 <!doctype html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f8f0e9"><title>Editor Cerita — Sela Cerita</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet"><link rel="stylesheet" href="editor.css"></head>
-<body><header class="editor-top"><a class="brand" href="dashboard.html">✿ Sela Cerita</a><div><span id="save-status">Perubahan belum disimpan</span><a class="preview-link" id="open-full-preview" href="preview.html">Lihat website ↗</a><button id="save-button" class="save-button">Simpan perubahan</button></div></header>
-<main class="editor-layout"><section class="editor-panel"><a class="back" href="dashboard.html#projects">← Kembali ke ceritaku</a><p class="eyebrow">GUIDED EDITOR / <span id="template-label">BLOOM</span></p><h1>Rangkai <em>ceritamu.</em></h1><p class="intro">Isi detail di bawah. Preview di samping akan mengikuti perubahanmu.</p>
-<form id="story-form">
-<label>Nama website<input id="project-title" maxlength="70" placeholder="Our Anniversary"></label>
-<div class="field-row"><label>Nama pertama<input id="name-one" maxlength="40" placeholder="Nama kamu"></label><label>Nama kedua<input id="name-two" maxlength="40" placeholder="Nama pasangan"></label></div>
-<label>Tanggal spesial<input id="event-date" type="date"></label>
-<label>Judul utama<input id="hero-title" maxlength="100" placeholder="To my favorite person."></label>
-<label>Cerita singkat<textarea id="story-text" rows="5" maxlength="1200" placeholder="Tuliskan cerita atau pesan yang ingin kamu bagikan..."></textarea><small class="hint">Maksimal 1.200 karakter.</small></label>
-<section class="photo-section"><div class="photo-heading"><div><b>Foto kenangan</b><small>Tambahkan maksimal 5 foto untuk galerimu.</small></div><span class="photo-count" id="photo-count">0/5</span></div><label class="upload-drop" for="photo-input"><span>＋</span><b>Pilih foto</b><small>JPG, PNG, atau WEBP · Maksimal 8 MB per foto</small><input id="photo-input" type="file" accept="image/jpeg,image/png,image/webp" multiple></label><div class="photo-grid" id="photo-grid"></div></section>
-<label>Warna aksen<select id="accent"><option value="peach">Peach hangat</option><option value="lavender">Lavender</option><option value="rose">Rose</option></select></label>
-<div class="editor-actions"><button type="button" class="secondary" id="preview-reset">Reset preview</button><button type="submit" class="save-button">Simpan cerita</button></div>
-</form><p class="privacy-note">Perubahan disimpan sebagai draft di akunmu. Website belum diterbitkan.</p></section>
-<section class="preview-panel"><div class="preview-toolbar"><b>LIVE PREVIEW</b><span>♡ &nbsp; <span id="preview-template">BLOOM</span></span></div><div class="preview-device"><div class="preview-page" id="preview-page"><div class="flower">✿</div><p class="preview-kicker">A LITTLE NOTE FOR YOU</p><h2 id="preview-heading">To my<br><i>favorite person.</i> ♡</h2><p class="preview-names" id="preview-names">Nama kamu & Nama pasangan</p><div class="preview-divider"></div><p class="preview-story" id="preview-story">Setiap cerita indah dimulai dari hal sederhana...</p><div class="preview-gallery" id="preview-gallery"></div><p class="preview-date" id="preview-date">OUR SPECIAL DAY</p></div></div><p class="preview-caption">Tampilan contoh · Foto akan tersimpan di ruang penyimpanan privat project-mu.</p></section></main>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f4ee">
+<title>Guided Editor — Sela Cerita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="editor.css">
+</head>
+<body>
+<header class="editor-top">
+  <a class="brand" href="dashboard.html"><span class="brand-mark">s.</span><span>sela cerita<small>YOUR CREATIVE SPACE</small></span></a>
+  <div class="top-center"><span class="project-dot"></span><span id="top-project-name">Untitled story</span><span class="top-separator">/</span><span id="template-label">BLOOM</span></div>
+  <div class="top-actions"><span class="save-status" id="save-status"><i></i> Perubahan belum disimpan</span><a class="preview-link" id="open-full-preview" href="preview.html">Preview website ↗</a><button id="save-button" class="save-button" type="button">Simpan</button></div>
+</header>
+<main class="editor-workspace">
+  <aside class="step-sidebar">
+    <a class="back-link" href="dashboard.html#projects">← Kembali ke ceritaku</a>
+    <div class="sidebar-heading"><span class="eyebrow">THE CREATIVE PROCESS</span><h1>Rangkai <em>ceritamu.</em></h1><p>Pelan-pelan saja. Kita susun setiap bagian bersama.</p></div>
+    <nav class="step-nav" aria-label="Langkah editor">
+      <button class="step-link active" type="button" data-step="0"><span class="step-number">01</span><span><b>Cover & judul</b><small>Awal dari cerita kalian</small></span><i>↗</i></button>
+      <button class="step-link" type="button" data-step="1"><span class="step-number">02</span><span><b>Identitas</b><small>Nama dan tanggal spesial</small></span><i>↗</i></button>
+      <button class="step-link" type="button" data-step="2"><span class="step-number">03</span><span><b>Cerita kalian</b><small>Hal yang ingin dikenang</small></span><i>↗</i></button>
+      <button class="step-link" type="button" data-step="3"><span class="step-number">04</span><span><b>Galeri foto</b><small>Momen dalam gambar</small></span><i>↗</i></button>
+      <button class="step-link" type="button" data-step="4"><span class="step-number">05</span><span><b>Sentuhan akhir</b><small>Warna dan suasana</small></span><i>↗</i></button>
+    </nav>
+    <div class="sidebar-foot"><span class="foot-heart">♡</span><div><b>Made with intention.</b><small>Setiap detail punya cerita.</small></div></div>
+  </aside>
+  <section class="editor-main">
+    <div class="content-head"><div><span class="eyebrow" id="step-eyebrow">STEP 01 / 05</span><h2 id="step-title">Mulai dari <em>cover.</em></h2><p id="step-description">Tentukan judul dan kalimat pertama yang akan menyambut tamu.</p></div><div class="progress-ring" aria-label="Progress"><span id="progress-text">01<span>/05</span></span></div></div>
+    <form id="story-form" novalidate>
+      <section class="step-panel active" data-panel="0">
+        <div class="section-kicker"><span>THE FIRST IMPRESSION</span><span>01 — COVER</span></div>
+        <div class="field-card">
+          <label for="project-title">Nama website <span>Nama yang akan muncul di dashboard</span></label>
+          <input id="project-title" maxlength="70" placeholder="Our Anniversary">
+        </div>
+        <div class="field-card">
+          <label for="hero-title">Kalimat utama <span>Jadikan ini pembuka yang paling kalian suka</span></label>
+          <textarea id="hero-title" rows="3" maxlength="100" placeholder="To my favorite person."></textarea>
+          <div class="field-meta"><small>Contoh: To my favorite person.</small><small><span id="hero-count">0</span>/100</small></div>
+        </div>
+        <div class="editor-tip"><span>✳</span><p><b>A little tip</b> Gunakan kalimat singkat yang terasa personal. Nanti kalimat ini menjadi fokus utama pada halaman pembuka.</p></div>
+      </section>
+      <section class="step-panel" data-panel="1">
+        <div class="section-kicker"><span>THE PEOPLE & THE DAY</span><span>02 — DETAILS</span></div>
+        <div class="field-card">
+          <label>Nama pasangan <span>Nama yang akan ditampilkan bersama</span></label>
+          <div class="field-row"><div><small class="input-caption">NAMA PERTAMA</small><input id="name-one" maxlength="40" placeholder="Nama kamu"></div><div><small class="input-caption">NAMA KEDUA</small><input id="name-two" maxlength="40" placeholder="Nama pasangan"></div></div>
+        </div>
+        <div class="field-card">
+          <label for="event-date">Tanggal spesial <span>Pilih hari yang ingin kalian rayakan</span></label>
+          <input id="event-date" type="date">
+        </div>
+        <div class="editor-tip"><span>♡</span><p><b>Keep it meaningful</b> Nama dan tanggal akan menjadi detail utama yang mudah ditemukan oleh orang-orang tersayang.</p></div>
+      </section>
+      <section class="step-panel" data-panel="2">
+        <div class="section-kicker"><span>WORDS FROM THE HEART</span><span>03 — YOUR STORY</span></div>
+        <div class="field-card">
+          <label for="story-text">Cerita singkat <span>Tulis pesan, perjalanan, atau hal kecil tentang kalian</span></label>
+          <textarea id="story-text" rows="9" maxlength="1200" placeholder="Setiap cerita indah dimulai dari hal sederhana..."></textarea>
+          <div class="field-meta"><small>Tidak harus panjang. Tulis dengan bahasamu sendiri.</small><small><span id="story-count">0</span>/1.200</small></div>
+        </div>
+        <div class="editor-tip"><span>✎</span><p><b>Write like yourselves</b> Cerita yang sederhana dan jujur sering kali terasa paling dekat.</p></div>
+      </section>
+      <section class="step-panel" data-panel="3">
+        <div class="section-kicker"><span>MEMORIES IN FRAME</span><span>04 — GALLERY</span></div>
+        <div class="field-card">
+          <div class="photo-heading"><label for="photo-input">Foto kenangan <span>Pilih hingga 5 foto terbaik untuk galeri</span></label><span class="photo-count" id="photo-count">0/5</span></div>
+          <label class="upload-drop" for="photo-input"><span class="upload-plus">＋</span><b>Tambahkan foto</b><small>JPG, PNG, atau WEBP · Maksimal 8 MB per foto</small><input id="photo-input" type="file" accept="image/jpeg,image/png,image/webp" multiple></label>
+          <div class="photo-grid" id="photo-grid"><span class="photo-empty">Belum ada foto yang ditambahkan.</span></div>
+        </div>
+        <div class="editor-tip"><span>♡</span><p><b>Choose your moments</b> Gunakan foto yang terang dan punya cerita. Kamu bisa mengubah urutannya kapan saja.</p></div>
+      </section>
+      <section class="step-panel" data-panel="4">
+        <div class="section-kicker"><span>THE FINISHING TOUCH</span><span>05 — APPEARANCE</span></div>
+        <div class="field-card">
+          <label>Warna aksen <span>Pilih suasana yang paling mewakili cerita kalian</span></label>
+          <div class="palette-options">
+            <label class="palette-option"><input type="radio" name="accent-choice" value="peach"><span class="swatch peach"></span><b>Peach</b><small>Warm & romantic</small></label>
+            <label class="palette-option"><input type="radio" name="accent-choice" value="lavender"><span class="swatch lavender"></span><b>Lavender</b><small>Soft & dreamy</small></label>
+            <label class="palette-option"><input type="radio" name="accent-choice" value="rose"><span class="swatch rose"></span><b>Rose</b><small>Sweet & timeless</small></label>
+          </div>
+          <select id="accent" hidden aria-hidden="true"><option value="peach">Peach hangat</option><option value="lavender">Lavender</option><option value="rose">Rose</option></select>
+        </div>
+        <div class="field-card final-card"><span class="eyebrow">ALMOST THERE</span><h3>Satu cerita, dirangkai <em>oleh kalian.</em></h3><p>Semua perubahan tersimpan sebagai draft pribadi. Kamu bisa melihat preview website sebelum memutuskan untuk menerbitkannya.</p><div class="final-summary"><span>Template pilihan</span><b id="final-template">BLOOM</b></div></div>
+      </section>
+      <div class="form-navigation"><button type="button" class="previous-button" id="previous-step" disabled>← Sebelumnya</button><span id="step-helper">Langkah 1 dari 5</span><button type="button" class="next-button" id="next-step">Lanjutkan <span>→</span></button><button type="submit" class="finish-button" id="finish-step" hidden>Simpan cerita <span>↗</span></button></div>
+    </form>
+    <p class="privacy-note"><span>◈</span> Draft hanya bisa diakses melalui akunmu. Website belum diterbitkan.</p>
+  </section>
+  <aside class="preview-area">
+    <div class="preview-head"><div><span class="eyebrow">A LIVE LOOK AT YOUR STORY</span><b>Live preview</b></div><div class="preview-controls"><button type="button" class="device-button active" data-device="phone" aria-label="Preview ponsel">▯</button><button type="button" class="device-button" data-device="wide" aria-label="Preview lebar">▭</button></div></div>
+    <div class="preview-stage"><div class="preview-device phone" id="preview-device"><div class="device-top"><span></span><i></i><span></span></div><article class="preview-page template-bloom" id="preview-page">
+      <div class="preview-cover"><span class="preview-ornament" id="preview-ornament">✿</span><p class="preview-kicker" id="preview-kicker">A LITTLE NOTE FOR YOU</p><h2 id="preview-heading">To my favorite person. ♡</h2><p class="preview-names" id="preview-names">Nama kamu & Nama pasangan</p><span class="preview-divider"></span><p class="preview-story" id="preview-story">Setiap cerita indah dimulai dari hal sederhana...</p><div class="preview-hero-photo" id="preview-hero-photo"></div><p class="preview-date" id="preview-date">OUR SPECIAL DAY</p><span class="preview-scroll">SCROLL TO EXPLORE ↓</span></div>
+      <section class="preview-story-section"><span class="mini-kicker">A NOTE FROM US</span><h3>Our little <em>story.</em></h3><p id="preview-story-repeat">Setiap cerita indah dimulai dari hal sederhana...</p><div class="preview-mini-gallery" id="preview-gallery"></div><span class="preview-end-mark">♡</span></section>
+    </article></div></div>
+    <div class="preview-foot"><span class="live-dot"></span><span>Preview diperbarui otomatis saat kamu mengetik</span></div>
+    <div class="preview-note"><b>Preview pribadi</b><p>Ini gambaran awal tampilan website. Hasil akhir dapat disesuaikan lagi dengan detail template.</p></div>
+  </aside>
+</main>
 <div class="photo-lightbox" id="photo-lightbox" aria-hidden="true"><button type="button" id="lightbox-close" aria-label="Tutup">×</button><img id="lightbox-image" alt="Foto kenangan ukuran besar"></div>
-<style>.preview-link{font-size:10px;color:#9d715f;text-decoration:none;font-weight:700;white-space:nowrap}@media(max-width:850px){.preview-link{font-size:9px}}</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="editor.js"></script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="editor.js"></script>
+</body></html>
