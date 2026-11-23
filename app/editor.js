@@ -4,7 +4,7 @@
   const params=new URLSearchParams(location.search),projectId=params.get("id");
   const $=id=>document.getElementById(id);
   const form=$("story-form"),status=$("save-status"),saveButton=$("save-button");
-  const fields={title:$("project-title"),one:$("name-one"),two:$("name-two"),date:$("event-date"),time:$("event-time"),venue:$("venue-name"),address:$("venue-address"),rsvpPhone:$("rsvp-phone"),rsvpMessage:$("rsvp-message"),closing:$("closing-message"),hero:$("hero-title"),story:$("story-text"),accent:$("accent")};
+  const fields={title:$("project-title"),one:$("name-one"),two:$("name-two"),date:$("event-date"),time:$("event-time"),venue:$("venue-name"),address:$("venue-address"),rsvpPhone:$("rsvp-phone"),rsvpMessage:$("rsvp-message"),closing:$("closing-message"),music:$("music-url"),hero:$("hero-title"),story:$("story-text"),accent:$("accent")};
   const photoInput=$("photo-input"),photoGrid=$("photo-grid"),photoCount=$("photo-count");
   const palettes={peach:"#d58a70",lavender:"#a18eaf",rose:"#c77f89"};
   const stepCopy=[
@@ -89,6 +89,7 @@
       venueAddress:fields.address.value.trim(),
       rsvp:{phone:fields.rsvpPhone.value.replace(/[^0-9]/g,""),message:fields.rsvpMessage.value.trim()},
       closingMessage:fields.closing.value.trim(),
+      musicUrl:fields.music.value.trim(),
       heroTitle:fields.hero.value.trim(),
       story:fields.story.value,
       appearance:{accent:fields.accent.value},
@@ -106,6 +107,7 @@
     fields.rsvpPhone.value=value.rsvp?.phone||"";
     fields.rsvpMessage.value=value.rsvp?.message||"";
     fields.closing.value=value.closingMessage||"";
+    fields.music.value=value.musicUrl||"";
     fields.hero.value=value.heroTitle||"";
     fields.story.value=value.story||"";
     fields.accent.value=value.appearance?.accent||"peach";
