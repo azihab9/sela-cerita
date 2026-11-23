@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f4ee">
+<meta name="description" content="Jelajahi detail desain undangan digital Sela Cerita.">
+<title>Explore the design — Sela Cerita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f7f4ee;--ink:#292923;--muted:#77756d;--olive:#74765c;--line:#dcd8cd;--serif:'Italiana',Georgia,serif;--sans:'Manrope','DM Sans',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans)}a{color:inherit;text-decoration:none}.top{height:82px;padding:0 max(24px,calc((100vw - 1160px)/2));display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font:25px var(--serif)}.brand span{color:var(--olive)}.back{font-size:9px;letter-spacing:1px}.layout{width:min(1160px,calc(100% - 48px));margin:60px auto 100px;display:grid;grid-template-columns:.75fr 1.25fr;gap:65px;align-items:start}.eyebrow{font-size:8px;letter-spacing:2px;color:var(--olive);font-weight:700}.copy h1{font:clamp(58px,7vw,88px)/.95 var(--serif);margin:25px 0 18px}.copy h1 i{color:var(--olive);font-weight:400}.copy>p:not(.eyebrow){font-size:11px;line-height:2;color:var(--muted)}.tag{display:inline-block;border:1px solid var(--line);padding:9px 12px;margin:12px 5px 25px 0;font-size:8px;letter-spacing:1px}.features{border-top:1px solid var(--line);margin:25px 0}.features div{padding:13px 0;border-bottom:1px solid var(--line);font-size:10px}.features span{color:var(--olive);margin-right:12px}.actions{display:flex;gap:12px;flex-wrap:wrap}.button{display:inline-flex;padding:15px 18px;background:var(--ink);color:white;font-size:9px;font-weight:700;letter-spacing:.3px}.button.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}.preview-shell{background:#e9e6dc;padding:18px;box-shadow:0 24px 65px #29292312}.preview-top{display:flex;justify-content:space-between;padding:0 0 14px;font-size:7px;letter-spacing:1.4px;color:#77756d}.preview-shell iframe{display:block;width:100%;height:720px;border:0;background:white}.preview-note{font-size:8px;color:#77756d;line-height:1.7;margin:12px 2px 0}footer{background:#303129;color:#f7f4ee;padding:25px;text-align:center;font-size:8px;letter-spacing:1px}
+@media(max-width:760px){.top{height:70px}.layout{grid-template-columns:1fr;gap:35px;margin:38px auto 65px}.copy h1{font-size:66px}.preview-shell{padding:9px}.preview-shell iframe{height:680px}.actions .button{flex:1;justify-content:center}}
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="index.html">sela <span>cerita.</span></a><a class="back" href="index.html#koleksi">← BACK TO COLLECTION</a></header>
+<main class="layout">
+<section class="copy"><p class="eyebrow">THE SIGNATURE COLLECTION / <span id="category">ROMANTIC</span></p><h1 id="name">Bloom</h1><p id="description">A soft, romantic design for a celebration filled with warmth and thoughtful details.</p><span class="tag" id="mood">SOFT & ROMANTIC</span><span class="tag">MOBILE FRIENDLY</span><div class="features"><div><span>01</span> A distinctive visual direction</div><div><span>02</span> Your names, story and celebration details</div><div><span>03</span> A shareable digital invitation link</div><div><span>04</span> Personalisation guidance from our studio</div></div><div class="actions"><a class="button" id="choose" href="index.html?template=Bloom#pesan">PILIH DESAIN INI ↗</a><a class="button alt" id="open-demo" href="demos/bloom.html" target="_blank" rel="noopener">OPEN FULL DEMO ↗</a></div></section>
+<section class="preview-shell"><div class="preview-top"><span>LIVE DESIGN PREVIEW</span><span>SC / 001</span></div><iframe id="preview" title="Preview template Sela Cerita" loading="lazy"></iframe><p class="preview-note">Preview ditampilkan dari demo desain yang tersedia. Konten contoh dapat berbeda dari hasil personalisasi akhir.</p></section>
+</main><footer>SELA CERITA STUDIO · EVERY LOVE DESERVES A BEAUTIFUL BEGINNING ♡</footer>
+<script>
+const designs={
+ bloom:{name:"Bloom",category:"ROMANTIC",description:"A soft, romantic design for a celebration filled with warmth, florals, and thoughtful little details.",mood:"SOFT & ROMANTIC",src:"demos/bloom.html",code:"Bloom"},
+ chapter:{name:"Chapter",category:"EDITORIAL",description:"A timeless, editorial direction for couples who love clean composition, quiet elegance, and beautiful typography.",mood:"TIMELESS & REFINED",src:"demos/chapter.html",code:"Chapter"},
+ playdate:{name:"Playdate",category:"PLAYFUL",description:"A joyful and expressive design for a celebration that feels spontaneous, colourful, and unmistakably yours.",mood:"JOYFUL & EXPRESSIVE",src:"demos/playdate.html",code:"Playdate"}
+};
+const key=new URLSearchParams(location.search).get("style")||"bloom";
+const design=designs[key]||designs.bloom;
+document.title=design.name+" — Sela Cerita";
+document.querySelector("#name").textContent=design.name;
+document.querySelector("#category").textContent=design.category;
+document.querySelector("#description").textContent=design.description;
+document.querySelector("#mood").textContent=design.mood;
+document.querySelector("#preview").src=design.src;
+document.querySelector("#open-demo").href=design.src;
+document.querySelector("#choose").href="index.html?template="+encodeURIComponent(design.code)+"#pesan";
+</script>
+</body></html>
