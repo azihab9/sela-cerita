@@ -100,3 +100,28 @@ if (form) form.addEventListener("submit", event => {
   status.textContent = "WhatsApp terbuka. Jangan lupa lampirkan foto pilihanmu di chat.";
 });
 window.addEventListener("beforeunload", clearPreview);
+
+/* Collection filter + template preselection */
+const filterButtons = document.querySelectorAll(".filter-chip");
+const collectionCards = document.querySelectorAll(".collection-card[data-category]");
+const catalogCount = document.querySelector("#catalog-count");
+if (filterButtons.length && collectionCards.length) {
+  filterButtons.forEach(button => button.addEventListener("click", () => {
+    const filter = button.dataset.filter;
+    filterButtons.forEach(item => item.classList.toggle("active", item === button));
+    let visible = 0;
+    collectionCards.forEach(card => {
+      const show = filter === "all" || card.dataset.category === filter;
+      card.classList.toggle("is-hidden", !show);
+      if (show) visible++;
+    });
+    if (catalogCount) catalogCount.textContent = String(visible).padStart(2, "0");
+  }));
+}
+const templateSelect = document.querySelector('select[name="template"]');
+if (templateSelect) {
+  const requested = new URLSearchParams(window.location.search).get("template");
+  if (requested && Array.from(templateSelect.options).some(option => option.value === requested || option.text === requested)) {
+    templateSelect.value = requested;
+  }
+}
