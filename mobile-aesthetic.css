@@ -1,0 +1,96 @@
+/* Sela Cerita — mobile editorial refinement
+   Reduce generic glyphs; let type, spacing and photography lead. */
+@media (max-width: 760px) {
+  :root { --mobile-rule: rgba(54, 48, 42, .18); }
+
+  /* Main catalog */
+  .menu-toggle {
+    display: inline-flex !important; width: 42px; height: 42px;
+    align-items: center; justify-content: center; position: relative;
+    border: 1px solid var(--mobile-rule); border-radius: 0;
+    background: transparent; color: transparent; font-size: 0;
+  }
+  .menu-toggle::before, .menu-toggle::after {
+    content: ""; position: absolute; left: 12px; right: 12px;
+    height: 1px; background: #34332d; transition: transform .2s;
+  }
+  .menu-toggle::before { transform: translateY(-3px); }
+  .menu-toggle::after { transform: translateY(3px); }
+  .menu-toggle[aria-expanded="true"]::before { transform: rotate(45deg); }
+  .menu-toggle[aria-expanded="true"]::after { transform: rotate(-45deg); }
+  .avatar-stack, .hero-stamp, .floating-invite .invite-heart,
+  .custom-flower, .step-icon { display: none !important; }
+  .hero-proof { margin-top: 34px; }
+  .steps article { border-top: 1px solid var(--mobile-rule); padding-top: 17px; }
+  .steps article > span:first-child { color: #8c806d; font: italic 17px Georgia, serif; }
+  .announcement span, .marquee span { opacity: .45; }
+
+  /* Pricing and template detail */
+  .top a:before { content: none !important; }
+  .top { min-height: 58px; }
+  .catalog-filters { scrollbar-width: none; }
+  .catalog-filters::-webkit-scrollbar { display: none; }
+
+  /* Customer dashboard */
+  .mobile-menu {
+    width: 40px; height: 40px; padding: 0 !important;
+    display: inline-flex; align-items: center; justify-content: center;
+    position: relative; border: 1px solid #ded8ce !important;
+    border-radius: 0 !important; background: transparent !important;
+    color: transparent !important; font-size: 0 !important;
+  }
+  .mobile-menu::before, .mobile-menu::after {
+    content: ""; position: absolute; left: 11px; right: 11px;
+    height: 1px; background: #37352f;
+  }
+  .mobile-menu::before { transform: translateY(-3px); }
+  .mobile-menu::after { transform: translateY(3px); }
+  .side-nav a span, .stat-icon, .date-chip, .bottom-note > span { display: none !important; }
+  .side-nav a {
+    border-radius: 0 !important; border-bottom: 1px solid #eee8df;
+    padding: 14px 10px !important; gap: 0 !important;
+    letter-spacing: .02em;
+  }
+  .side-nav a.active { background: #f5f1e9 !important; color: #6f7259 !important; }
+  .stat-card { border-radius: 3px !important; box-shadow: none !important; }
+  .bottom-note { border-radius: 3px !important; background: #f1eee6 !important; }
+  .brand-mark { border-radius: 50% !important; background: transparent !important; border: 1px solid #b8ad9d; }
+  .logout-button { border-radius: 0 !important; }
+
+  /* Editor workspace */
+  .editor-tip > span, .preview-ornament, .preview-end-mark { display: none !important; }
+  .editor-tip { border-radius: 2px !important; border-left: 1px solid #aaa18e; }
+  .step-link { border-radius: 2px !important; }
+  .step-number { border-radius: 50% !important; background: transparent !important; border: 1px solid #c9c1b3; color: #77735f; }
+  .device-button { font-size: 0 !important; position: relative; }
+  .device-button::after {
+    content: "M"; font: 600 9px/27px Arial, sans-serif;
+    position: absolute; inset: 0; text-align: center;
+  }
+  .device-button[data-device="desktop"]::after { content: "D"; }
+  .preview-device { box-shadow: 0 12px 35px rgba(40, 36, 29, .10) !important; }
+  .preview-foot { letter-spacing: .04em; }
+
+  /* Authentication */
+  .auth-shell > .brand > span:first-child { display: none !important; }
+  .auth-shell > .brand { justify-content: center; letter-spacing: .02em; }
+  .art-stamp { display: none !important; }
+
+  /* Invitation demos: retain navigation labels, remove mismatched glyph row */
+  .bottom-nav { border-radius: 3px !important; padding: 9px 5px !important; }
+  .bottom-nav a span { display: none !important; }
+  .bottom-nav a { font-size: 8px !important; letter-spacing: .04em; padding: 6px 3px !important; }
+  .bottom-nav a.active { border-bottom: 1px solid currentColor; }
+  .music-btn {
+    width: 38px !important; height: 38px !important;
+    border-radius: 50% !important; font: italic 17px Georgia, serif !important;
+    box-shadow: 0 5px 18px rgba(40, 30, 28, .16) !important;
+  }
+  .floating-heart, .hero:after, .cover-card:before, .cover-card:after,
+  .play-cover:before, .play-cover:after, .sticker { display: none !important; }
+  .gallery-grid button:after { width: 24px !important; height: 24px !important; border-radius: 0 !important; }
+  .lightbox button, .photo-lightbox > button {
+    border-radius: 0 !important; width: 38px !important; height: 38px !important;
+  }
+  .personalize { border-radius: 0 !important; }
+}
