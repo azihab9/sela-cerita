@@ -17,9 +17,9 @@ if(!configured){document.body.innerHTML='<main style="font-family:Arial;padding:
 const db=window.supabase.createClient(cfg.url,cfg.anonKey);
 const escapeHtml=value=>String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
 const templateMeta={
- bloom:{name:"Bloom",kind:"01 / THE ROMANTIC",headline:"To my<br><i>favorite</i><br>person. ♡",className:"bloom-art"},
- chapter:{name:"Chapter",kind:"02 / THE EDITORIAL",headline:"CHAPTER<br><i>of us.</i>",className:"chapter-art"},
- playdate:{name:"Playdate",kind:"03 / THE PLAYFUL",headline:"GOOD<br>TIMES<br><i>only!</i>",className:"playdate-art"}
+ bloom:{name:"Bloom",kind:"01 / THE ROMANTIC",headline:"To my<br><i>favorite</i><br>person. ♡",className:"bloom-art",description:"Romance, framed like an editorial."},
+ chapter:{name:"Afterglow",kind:"02 / THE CINEMATIC",headline:"AFTER<br><i>glow.</i>",className:"chapter-art",description:"Cinematic, intimate, and atmospheric."},
+ playdate:{name:"Playdate",kind:"03 / THE ARTISTIC",headline:"GOOD<br><i>times</i><br>ONLY!",className:"playdate-art",description:"Colorful, playful, and full of personality."}
 };
 let currentUser=null;
 function projectCard(project){
@@ -44,7 +44,7 @@ async function loadTemplates(){
  const grid=document.querySelector("#template-grid");
  const {data,error}=await db.from("templates").select("id,name,description").eq("is_active",true).order("name");
  if(error){grid.innerHTML='<p class="loading-state">Template belum dapat dimuat: '+escapeHtml(error.message)+'</p>';return;}
- grid.innerHTML=(data||[]).map(t=>{const meta=templateMeta[t.id]||templateMeta.bloom;return '<article class="template-option"><div class="project-art '+meta.className+'"><span>'+meta.kind+'</span><div>'+meta.headline+'</div><small>'+escapeHtml(t.name).toUpperCase()+' TEMPLATE</small></div><h3>'+escapeHtml(t.name)+'</h3><p>'+escapeHtml(t.description||"Personalize this template.")+'</p><button class="primary-button choose-template" data-template="'+escapeHtml(t.id)+'">Pilih '+escapeHtml(t.name)+' ↗</button></article>'}).join("");
+ grid.innerHTML=(data||[]).map(t=>{const meta=templateMeta[t.id]||templateMeta.bloom;const displayName=meta.name||t.name;return '<article class="template-option"><div class="project-art '+meta.className+'"><span>'+meta.kind+'</span><div>'+meta.headline+'</div><small>'+escapeHtml(displayName).toUpperCase()+' TEMPLATE</small></div><h3>'+escapeHtml(displayName)+'</h3><p>'+escapeHtml(meta.description||t.description||"Personalize this template.")+'</p><button class="primary-button choose-template" data-template="'+escapeHtml(t.id)+'">Pilih '+escapeHtml(displayName)+' ↗</button></article>'}).join("");
  grid.querySelectorAll(".choose-template").forEach(button=>button.addEventListener("click",()=>createProject(button.dataset.template)));
 }
 async function createProject(templateId,options={}){
