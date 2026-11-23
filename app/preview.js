@@ -1,8 +1,11 @@
 (()=> {
- const cfg=window.SELA_SUPABASE_CONFIG||{};
+ const root=document.getElementById("preview-root");
+ if(!window.supabase||!window.SELA_SUPABASE_CONFIG){
+  root.innerHTML='<div class="error"><span>♡</span><h2>Preview belum siap</h2><p>Layanan preview belum berhasil dimuat. Muat ulang halaman beberapa saat lagi.</p><a href="dashboard.html">Kembali ke dashboard</a></div>';return;
+ }
+ const cfg=window.SELA_SUPABASE_CONFIG;
  const db=window.supabase.createClient(cfg.url,cfg.anonKey);
  const id=new URLSearchParams(location.search).get("id");
- const root=document.getElementById("preview-root");
  const esc=value=>String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
  const palettes={peach:"#f0d3c5",lavender:"#e3d7e9",rose:"#f0cbd0"};
  const dateText=value=>value?new Date(value+"T00:00:00").toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"}):"OUR SPECIAL DAY";
@@ -65,5 +68,8 @@
   document.addEventListener("keydown",event=>{if(event.key==="Escape")close();});
   document.title=(project.title||"Cerita istimewa")+" — Sela Cerita";
  }
- init();
+ init().catch(error=>{
+  console.error("Sela Cerita preview error:",error);
+  fail(error?.message||"Terjadi kendala saat memuat data cerita. Coba muat ulang halaman.");
+ });
 })();
