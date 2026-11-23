@@ -8,7 +8,7 @@ Core principle: customers personalize content and approved design settings; the 
 ## MVP customer journey
 1. Register / sign in.
 2. Open a private dashboard.
-3. Select an active template (Bloom, Chapter, Playdate).
+3. Select an active template (Bloom, Afterglow, Playdate).
 4. Create a project bound to that template.
 5. Edit allowed fields: names, dates, text, photos, and approved appearance options.
 6. Preview the project.
