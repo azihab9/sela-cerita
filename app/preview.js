@@ -68,7 +68,9 @@
   document.addEventListener("keydown",event=>{if(event.key==="Escape")close();});
   document.title=(project.title||"Cerita istimewa")+" — Sela Cerita";
  }
- init().catch(error=>{
+ const previewTimeout=setTimeout(()=>fail("Pemuatan terlalu lama. Periksa koneksi lalu coba muat ulang. Jika masih gagal, kirim pesan error dari halaman ini."),15000);
+ init().then(()=>clearTimeout(previewTimeout)).catch(error=>{
+  clearTimeout(previewTimeout);
   console.error("Sela Cerita preview error:",error);
   fail(error?.message||"Terjadi kendala saat memuat data cerita. Coba muat ulang halaman.");
  });
