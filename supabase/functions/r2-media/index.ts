@@ -62,7 +62,7 @@ Deno.serve(async (req) => {
       if ((count || 0) >= capFor(project.package_code)) return json({ error: "Photo limit reached for this package" }, 409);
       const objectKey = `${user.id}/${projectId}/${crypto.randomUUID()}.webp`;
       const uploadUrl = await getSignedUrl(s3, new PutObjectCommand({
-        Bucket: bucket, Key: objectKey, ContentType: "image/webp", ContentLength: expectedBytes,
+        Bucket: bucket, Key: objectKey, ContentType: "image/webp",
       }), { expiresIn: 300 });
       return json({ uploadUrl, objectKey, filename });
     }
@@ -74,7 +74,7 @@ Deno.serve(async (req) => {
       }
       const head = await s3.send(new HeadObjectCommand({ Bucket: bucket, Key: objectKey }));
       const size = Number(head.ContentLength || 0);
-      if (head.ContentType !== "image/webp" || size < 1 || size > 2 * 1024 * 1024) {
+      const expectedBytes = Number(body.expectedBytes);\n      const width = Number(body.width), height = Number(body.height);\n      if (!Number.isInteger(expectedBytes) || size !== expectedBytes || size < 1 || size > 2 * 1024 * 1024 ||\n          !Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1 || width > 1600 || height > 1600 ||\n          head.ContentType !== "image/webp") {
         await s3.send(new DeleteObjectCommand({ Bucket: bucket, Key: objectKey }));
         return json({ error: "Optimized image must be WEBP and at most 2 MB" }, 400);
       }
@@ -87,7 +87,7 @@ Deno.serve(async (req) => {
         project_id: projectId, owner_id: user.id, object_key: objectKey,
         original_filename: String(body.filename || "photo").slice(0, 120),
         mime_type: "image/webp", byte_size: size,
-        width: Number(body.width), height: Number(body.height),
+        width, height,
         position: count || 0,
       }).select("id,object_key,position,width,height,byte_size").single();
       if (error) {
