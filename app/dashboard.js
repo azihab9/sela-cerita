@@ -56,7 +56,7 @@ async function createProject(templateId,options={}){
  if(error){notify("Project belum bisa dibuat: "+error.message);return;}
  notify("Project "+cleanTitle+" berhasil dibuat!");
  await loadProjects();
- if(options.openEditor){location.href="editor.html?id="+encodeURIComponent(data.id);return;}
+ if(options.openEditor){location.href=(templateId.startsWith("ms_")?"mini-stories-editor.html":"editor.html")+"?id="+encodeURIComponent(data.id);return;}
  showView("projects");
 }
 async function loadProjects(){
@@ -74,7 +74,7 @@ async function init(){
  document.querySelector("#user-avatar").textContent=displayName.slice(0,2).toUpperCase();
  document.querySelector("#logout-button").addEventListener("click",async()=>{const {error}=await db.auth.signOut();if(error){notify(error.message);return;}location.replace("auth.html");});
  const requestedTemplate=new URLSearchParams(location.search).get("template");
- const allowedTemplates=["bloom","chapter","playdate"];
+ const allowedTemplates=["bloom","chapter","playdate","ms_journey","ms_open_when","ms_day_for_you","ms_just_because"];
  // Remove the one-time selection from the address bar before creating the draft,
  // so refreshing the dashboard cannot create duplicate projects.
  if(requestedTemplate)history.replaceState(null,"",location.pathname+location.hash);
