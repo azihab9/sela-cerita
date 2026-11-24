@@ -47,6 +47,9 @@ create trigger projects_set_product_line
 before insert or update of template_id on public.projects
 for each row execute function public.set_project_product_line();
 
+create unique index if not exists projects_id_owner_unique_idx
+  on public.projects(id, owner_id);
+
 create table if not exists public.media_assets (
   id uuid primary key default gen_random_uuid(),
   project_id uuid not null references public.projects(id) on delete cascade,
