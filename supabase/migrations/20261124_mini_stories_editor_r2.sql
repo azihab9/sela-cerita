@@ -84,6 +84,7 @@ using (owner_id = (select auth.uid()));
 -- using the service role may register or remove object metadata.
 revoke all on public.media_assets from anon, authenticated;
 grant select on public.media_assets to authenticated;
+grant all on public.media_assets to service_role;
 
 -- Restrict editor updates to content fields. Payment, ownership, publication,
 -- expiry, product line, package and template fields remain server-controlled.
