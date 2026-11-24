@@ -86,6 +86,12 @@ revoke all on public.media_assets from anon, authenticated;
 grant select on public.media_assets to authenticated;
 grant all on public.media_assets to service_role;
 
+-- Restrict customer writes to the fields needed to create and edit a draft.
+-- In particular, package_code, status, product_line, ownership and publication fields
+-- cannot be forged by a browser client.
+revoke insert on public.projects from authenticated;
+grant insert (owner_id, template_id, title, content) on public.projects to authenticated;
+
 -- Restrict editor updates to content fields. Payment, ownership, publication,
 -- expiry, product line, package and template fields remain server-controlled.
 revoke update on public.projects from authenticated;
