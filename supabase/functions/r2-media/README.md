@@ -24,7 +24,7 @@ Configure the bucket CORS policy to allow browser PUT uploads from the deployed 
       "http://localhost:5500",
       "http://127.0.0.1:5500"
     ],
-    "AllowedMethods": ["PUT", "HEAD"],
+    "AllowedMethods": ["GET", "PUT", "HEAD"],
     "AllowedHeaders": ["Content-Type"],
     "ExposeHeaders": ["ETag"],
     "MaxAgeSeconds": 3600
