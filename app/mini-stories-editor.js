@@ -118,7 +118,7 @@
         if (!put.ok) throw new Error("Upload ke penyimpanan gagal.");
         const completed = await mediaAction({
           action:"confirm-upload", projectId, objectKey:signed.objectKey,
-          filename:file.name, width:image.width, height:image.height,
+          filename:file.name, width:image.width, height:image.height, expectedBytes:image.blob.size,
         });
         assets.push({ ...completed.asset, viewUrl:completed.viewUrl });
         renderAssets();
