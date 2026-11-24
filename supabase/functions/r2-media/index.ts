@@ -54,7 +54,8 @@ Deno.serve(async (req) => {
 
     if (action === "sign-upload") {
       const width = Number(body.width), height = Number(body.height);
-      const filename = String(body.filename || "photo").slice(0, 120);\n      const expectedBytes = Number(body.expectedBytes);\n      if (!Number.isInteger(expectedBytes) || expectedBytes < 1 || expectedBytes > 2 * 1024 * 1024) return json({ error: "Invalid optimized image size" }, 400);
+      const filename = String(body.filename || "photo").slice(0, 120);
+      const expectedBytes = Number(body.expectedBytes);\n      if (!Number.isInteger(expectedBytes) || expectedBytes < 1 || expectedBytes > 2 * 1024 * 1024) return json({ error: "Invalid optimized image size" }, 400);
       if (!Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1 || width > 6000 || height > 6000) {
         return json({ error: "Invalid image dimensions" }, 400);
       }
