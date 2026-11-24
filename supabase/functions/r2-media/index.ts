@@ -55,7 +55,8 @@ Deno.serve(async (req) => {
     if (action === "sign-upload") {
       const width = Number(body.width), height = Number(body.height);
       const filename = String(body.filename || "photo").slice(0, 120);
-      const expectedBytes = Number(body.expectedBytes);\n      if (!Number.isInteger(expectedBytes) || expectedBytes < 1 || expectedBytes > 2 * 1024 * 1024) return json({ error: "Invalid optimized image size" }, 400);
+      const expectedBytes = Number(body.expectedBytes);
+      if (!Number.isInteger(expectedBytes) || expectedBytes < 1 || expectedBytes > 2 * 1024 * 1024) return json({ error: "Invalid optimized image size" }, 400);
       if (!Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1 || width > 6000 || height > 6000) {
         return json({ error: "Invalid image dimensions" }, 400);
       }
@@ -75,9 +76,22 @@ Deno.serve(async (req) => {
       }
       const head = await s3.send(new HeadObjectCommand({ Bucket: bucket, Key: objectKey }));
       const size = Number(head.ContentLength || 0);
-      const expectedBytes = Number(body.expectedBytes);\n      const width = Number(body.width), height = Number(body.height);\n      if (!Number.isInteger(expectedBytes) || size !== expectedBytes || size < 1 || size > 2 * 1024 * 1024 ||\n          !Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1 || width > 1600 || height > 1600 ||\n          head.ContentType !== "image/webp") {
+      const expectedBytes = Number(body.expectedBytes);
+      const width = Number(body.width), height = Number(body.height);
+      if (!Number.isInteger(expectedBytes) || size !== expectedBytes || size < 1 || size > 2 * 1024 * 1024 ||
+          !Number.isInteger(width) || !Number.isInteger(height) || width < 1 || height < 1 || width > 1600 || height > 1600 ||
+          head.ContentType !== "image/webp") {
         await s3.send(new DeleteObjectCommand({ Bucket: bucket, Key: objectKey }));
         return json({ error: "Optimized image must be WEBP and at most 2 MB" }, 400);
+      }
+      const sample = await s3.send(new GetObjectCommand({ Bucket: bucket, Key: objectKey, Range: "bytes=0-11" }));
+      const signature = new Uint8Array(await sample.Body!.transformToByteArray());
+      const isWebp = signature.length >= 12 &&
+        String.fromCharCode(...signature.slice(0, 4)) === "RIFF" &&
+        String.fromCharCode(...signature.slice(8, 12)) === "WEBP";
+      if (!isWebp) {
+        await s3.send(new DeleteObjectCommand({ Bucket: bucket, Key: objectKey }));
+        return json({ error: "File content is not a valid WEBP image" }, 400);
       }
       const { count } = await admin.from("media_assets").select("id", { count: "exact", head: true }).eq("project_id", projectId);
       if ((count || 0) >= capFor(project.package_code)) {
