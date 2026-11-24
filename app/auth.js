@@ -12,7 +12,7 @@
   const signupTab=document.querySelector("#signup-tab");
   let mode="login";
   let client=null;
-  const allowedTemplates=["bloom","chapter","playdate"];
+  const allowedTemplates=["bloom","chapter","playdate","ms_journey","ms_open_when","ms_day_for_you","ms_just_because"];
   const requestedTemplate=new URLSearchParams(location.search).get("template");
   const selectedTemplate=allowedTemplates.includes(requestedTemplate)?requestedTemplate:null;
   function dashboardUrl(){
