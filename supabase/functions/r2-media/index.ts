@@ -25,7 +25,7 @@ const s3 = new S3Client({
   endpoint: `https://${env("R2_ACCOUNT_ID")}.r2.cloudflarestorage.com`,
   credentials: { accessKeyId: env("R2_ACCESS_KEY_ID"), secretAccessKey: env("R2_SECRET_ACCESS_KEY") },
 });
-const capFor = (code: string | null) => ({ basic: 5, plus: 15, premium: 30 }[code || "basic"] || 5);
+const capFor = (_code: string | null) => 5; // Mini Stories launch package: 5 photos.
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
@@ -115,6 +115,12 @@ Deno.serve(async (req) => {
       await s3.send(new DeleteObjectCommand({ Bucket: bucket, Key: asset.object_key }));
       const { error: deleteError } = await admin.from("media_assets").delete().eq("id", asset.id);
       if (deleteError) return json({ error: "Image removed from storage but metadata cleanup failed" }, 500);
+      const { data: remaining, error: listError } = await admin.from("media_assets")
+        .select("id").eq("project_id", projectId).order("position");
+      if (listError) return json({ error: "Image deleted but gallery order could not be refreshed" }, 500);
+      for (let index = 0; index < (remaining || []).length; index++) {
+        await admin.from("media_assets").update({ position: index }).eq("id", remaining[index].id);
+      }
       return json({ ok: true });
     }
 
