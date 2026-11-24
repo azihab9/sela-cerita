@@ -56,7 +56,7 @@ The function supports authenticated actions:
 - `view-url`: returns a 15-minute signed read URL for an asset owned by the caller.
 - `delete`: deletes the caller's object and metadata.
 
-The editor converts selected images to WEBP, scales the longest side to at most 1600 px, and enforces a 2 MB output ceiling. R2 objects remain private; signed read URLs are temporary and must be refreshed when a preview is reopened.
+The launch Mini Stories package currently allows 5 photos per project. The editor converts selected images to WEBP, scales the longest side to at most 1600 px, and enforces a 2 MB output ceiling. R2 objects remain private; signed read URLs are temporary and must be refreshed when a preview is reopened.
 
 ## 5. Important deployment notes
 
