@@ -17,6 +17,10 @@ if(!configured){document.body.innerHTML='<main style="font-family:Arial;padding:
 const db=window.supabase.createClient(cfg.url,cfg.anonKey);
 const escapeHtml=value=>String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
 const templateMeta={
+ ms_journey:{name:"Our Little Journey",kind:"MINI STORIES / ANNIVERSARY",headline:"Our little<br><i>journey.</i>",className:"playdate-art",description:"A playful timeline of the little moments that became your story."},
+ ms_open_when:{name:"Open When",kind:"MINI STORIES / LETTERS",headline:"Open<br><i>when...</i>",className:"bloom-art",description:"A collection of little letters for every kind of day."},
+ ms_day_for_you:{name:"A Day for You",kind:"MINI STORIES / BIRTHDAY",headline:"A day<br><i>for you.</i>",className:"chapter-art",description:"A colorful little page made to celebrate one special person."},
+ ms_just_because:{name:"Just Because",kind:"MINI STORIES / PERSONAL",headline:"Just<br><i>because.</i>",className:"playdate-art",description:"A surprise page for no reason other than making someone smile."},
  bloom:{name:"Bloom",kind:"01 / THE ROMANTIC",headline:"To my<br><i>favorite</i><br>person. ♡",className:"bloom-art",description:"Romance, framed like an editorial."},
  chapter:{name:"Afterglow",kind:"02 / THE CINEMATIC",headline:"AFTER<br><i>glow.</i>",className:"chapter-art",description:"Cinematic, intimate, and atmospheric."},
  playdate:{name:"Playdate",kind:"03 / THE ARTISTIC",headline:"GOOD<br><i>times</i><br>ONLY!",className:"playdate-art",description:"Colorful, playful, and full of personality."}
@@ -38,7 +42,7 @@ function renderProjects(projects){
  document.querySelector("#draft-count").textContent=projects.filter(p=>p.status==="draft"||p.status==="pending_payment").length;
  document.querySelector("#published-count").textContent=projects.filter(p=>p.status==="published").length;
  document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.go)));
- document.querySelectorAll("[data-project-id]").forEach(b=>b.addEventListener("click",()=>{location.href="editor.html?id="+encodeURIComponent(b.dataset.projectId);}));
+ document.querySelectorAll("[data-project-id]").forEach(b=>b.addEventListener("click",()=>{const p=projects.find(x=>x.id===b.dataset.projectId);location.href=(p&&p.template_id.startsWith("ms_")?"mini-stories-editor.html":"editor.html")+"?id="+encodeURIComponent(b.dataset.projectId);}));
 }
 async function loadTemplates(){
  const grid=document.querySelector("#template-grid");
